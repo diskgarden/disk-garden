@@ -39,16 +39,16 @@ never shows a placeholder. Run `python3 scripts/build-website.py` and commit; th
 
 ## Hosting (GitHub Pages)
 
-This repository is public (GitHub Pages is free for public repos); the app lives in the private
-`firefinchdev/disk-garden-app`, which keeps a clone of this repo in its git-ignored `site/` folder.
+This repository (`diskgarden/disk-garden`) is public (GitHub Pages is free for public repos); the app lives in the
+private `firefinchdev/disk-garden-app`, which keeps a clone of this repo in its git-ignored `site/` folder.
 
 `.github/workflows/pages.yml` builds and deploys on every push to `main` that touches `website/`, `scripts/` or the
 workflow. Settings: **Pages → Source: GitHub Actions**, custom domain `diskgarden.app`, **Enforce HTTPS**.
 
 DNS at the domain registrar: apex `A` records `185.199.108.153`, `185.199.109.153`, `185.199.110.153`,
-`185.199.111.153` (and `AAAA` `2606:50c0:8000::153` … `2606:50c0:8003::153`), and `CNAME` `www` → `firefinchdev.github.io`.
+`185.199.111.153` (and `AAAA` `2606:50c0:8000::153` … `2606:50c0:8003::153`), and `CNAME` `www` → `diskgarden.github.io`.
 The site uses root-relative links, so it only renders correctly on the custom domain (not under
-`firefinchdev.github.io/disk-garden/`).
+`diskgarden.github.io/disk-garden/`).
 
 ## Releases and the update feed
 
