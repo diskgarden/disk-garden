@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- dg:head -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>What Is “System Data” on Mac — and How to Reduce It</title>
+  <meta name="description" content="What macOS counts as System Data, why it gets so big (caches, Time Machine snapshots, Docker, Xcode) and how to shrink it safely.">
+  <link rel="canonical" href="https://diskgarden.app/guides/system-data-mac/">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+  <link rel="alternate" hreflang="en" href="https://diskgarden.app/guides/system-data-mac/">
+  <link rel="alternate" hreflang="es" href="https://diskgarden.app/es/guides/system-data-mac/">
+  <link rel="alternate" hreflang="pt-BR" href="https://diskgarden.app/pt-br/guides/system-data-mac/">
+  <link rel="alternate" hreflang="pt-PT" href="https://diskgarden.app/pt-pt/guides/system-data-mac/">
+  <link rel="alternate" hreflang="fr" href="https://diskgarden.app/fr/guides/system-data-mac/">
+  <link rel="alternate" hreflang="it" href="https://diskgarden.app/it/guides/system-data-mac/">
+  <link rel="alternate" hreflang="de" href="https://diskgarden.app/de/guides/system-data-mac/">
+  <link rel="alternate" hreflang="sv" href="https://diskgarden.app/sv/guides/system-data-mac/">
+  <link rel="alternate" hreflang="pl" href="https://diskgarden.app/pl/guides/system-data-mac/">
+  <link rel="alternate" hreflang="tr" href="https://diskgarden.app/tr/guides/system-data-mac/">
+  <link rel="alternate" hreflang="ru" href="https://diskgarden.app/ru/guides/system-data-mac/">
+  <link rel="alternate" hreflang="uk" href="https://diskgarden.app/uk/guides/system-data-mac/">
+  <link rel="alternate" hreflang="ar" href="https://diskgarden.app/ar/guides/system-data-mac/">
+  <link rel="alternate" hreflang="zh-Hans" href="https://diskgarden.app/zh-hans/guides/system-data-mac/">
+  <link rel="alternate" hreflang="zh-Hant" href="https://diskgarden.app/zh-hant/guides/system-data-mac/">
+  <link rel="alternate" hreflang="ja" href="https://diskgarden.app/ja/guides/system-data-mac/">
+  <link rel="alternate" hreflang="ko" href="https://diskgarden.app/ko/guides/system-data-mac/">
+  <link rel="alternate" hreflang="vi" href="https://diskgarden.app/vi/guides/system-data-mac/">
+  <link rel="alternate" hreflang="x-default" href="https://diskgarden.app/guides/system-data-mac/">
+  <meta name="theme-color" content="#0f1513">
+  <meta name="color-scheme" content="dark">
+  <meta property="og:site_name" content="DiskGarden">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="What Is “System Data” on Mac — and How to Reduce It">
+  <meta property="og:description" content="What macOS counts as System Data, why it gets so big (caches, Time Machine snapshots, Docker, Xcode) and how to shrink it safely.">
+  <meta property="og:url" content="https://diskgarden.app/guides/system-data-mac/">
+  <meta property="og:image" content="https://diskgarden.app/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="DiskGarden: a disk space map of a Mac, drawn as a colorful bloom">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="What Is “System Data” on Mac — and How to Reduce It">
+  <meta name="twitter:description" content="What macOS counts as System Data, why it gets so big (caches, Time Machine snapshots, Docker, Xcode) and how to shrink it safely.">
+  <meta name="twitter:image" content="https://diskgarden.app/assets/og-image.png">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="stylesheet" href="/assets/site.min.css">
+  <script>document.documentElement.classList.add("js")</script>
+  <script>(function(){try{if(localStorage.getItem('dg-lang'))return}catch(e){}if(/bot|crawl|spider|slurp|lighthouse|headless/i.test(navigator.userAgent))return;var S=["es", "fr", "it", "de", "sv", "pl", "tr", "ru", "uk", "ar", "ja", "ko", "vi"],L=navigator.languages||[navigator.language||''];for(var i=0;i<L.length;i++){var l=(L[i]||'').toLowerCase(),f=null;if(l.indexOf('en')===0)return;if(/^zh-(tw|hk|mo|hant)/.test(l))f='zh-hant';else if(l.indexOf('zh')===0)f='zh-hans';else if(l==='pt-pt')f='pt-pt';else if(l.indexOf('pt')===0)f='pt-br';else if(S.indexOf(l.slice(0,2))>=0)f=l.slice(0,2);if(f){location.replace('/'+f+location.pathname+location.search+location.hash);return}}})()</script>
+  <script src="/assets/site.js" defer></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://diskgarden.app/#org","name":"DiskGarden","url":"https://diskgarden.app/","logo":"https://diskgarden.app/assets/app-icon-512.png","contactPoint":{"@type":"ContactPoint","contactType":"customer support","email":"support@diskgarden.app"}},{"@type":"WebSite","@id":"https://diskgarden.app/#website","name":"DiskGarden","url":"https://diskgarden.app/","publisher":{"@id":"https://diskgarden.app/#org"},"inLanguage":"en"},{"@type":"TechArticle","headline":"What is \"System Data\" on a Mac — and how do you shrink it?","description":"What macOS counts as System Data, why it gets so big (caches, Time Machine snapshots, Docker, Xcode) and how to shrink it safely.","url":"https://diskgarden.app/guides/system-data-mac/","dateModified":"2026-10-04","inLanguage":"en","author":{"@id":"https://diskgarden.app/#org"},"publisher":{"@id":"https://diskgarden.app/#org"},"image":"https://diskgarden.app/assets/og-image.png","about":{"@id":"https://diskgarden.app/#app"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DiskGarden","item":"https://diskgarden.app/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://diskgarden.app/guides/"},{"@type":"ListItem","position":3,"name":"What is System Data?","item":"https://diskgarden.app/guides/system-data-mac/"}]}]}</script>
+<!-- /dg:head -->
+</head>
+<body data-page="article">
+<!-- dg:header -->
+  <header class="site-header">
+    <div class="bar">
+      <a class="brand" href="/" aria-label="DiskGarden home"><svg class="sprout" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M11.37 23.52Q10.32 17.76 11.37 12.00L13.05 12.00Q12.00 17.76 13.05 23.52ZM12.00 12.96Q1.92 12.48 2.34 2.40Q11.16 1.92 12.00 12.96ZM12.42 11.04Q13.26 0.48 21.66 0.48Q22.08 10.56 12.42 11.04Z"/></svg>DiskGarden</a>
+      <nav class="nav" aria-label="Main">
+        <a href="/#features">Features</a>
+        <a href="/download/">Download</a>
+        <a href="/support/" aria-current="page">Support</a>
+      </nav>
+      <div class="header-cta">
+        <div class="lang"><button class="lang-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Language"><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.6 2.4 2.6 14.6 0 17M12 3.5c-2.6 2.4-2.6 14.6 0 17"/></g></svg><span translate="no">EN</span></button><div class="lang-menu" role="menu"><a href="/guides/system-data-mac/" hreflang="en" lang="en" data-lang="en" aria-current="true" translate="no">English</a><a href="/es/guides/system-data-mac/" hreflang="es" lang="es" data-lang="es" translate="no">Español</a><a href="/pt-br/guides/system-data-mac/" hreflang="pt-BR" lang="pt-BR" data-lang="pt-br" translate="no">Português (Brasil)</a><a href="/pt-pt/guides/system-data-mac/" hreflang="pt-PT" lang="pt-PT" data-lang="pt-pt" translate="no">Português (Portugal)</a><a href="/fr/guides/system-data-mac/" hreflang="fr" lang="fr" data-lang="fr" translate="no">Français</a><a href="/it/guides/system-data-mac/" hreflang="it" lang="it" data-lang="it" translate="no">Italiano</a><a href="/de/guides/system-data-mac/" hreflang="de" lang="de" data-lang="de" translate="no">Deutsch</a><a href="/sv/guides/system-data-mac/" hreflang="sv" lang="sv" data-lang="sv" translate="no">Svenska</a><a href="/pl/guides/system-data-mac/" hreflang="pl" lang="pl" data-lang="pl" translate="no">Polski</a><a href="/tr/guides/system-data-mac/" hreflang="tr" lang="tr" data-lang="tr" translate="no">Türkçe</a><a href="/ru/guides/system-data-mac/" hreflang="ru" lang="ru" data-lang="ru" translate="no">Русский</a><a href="/uk/guides/system-data-mac/" hreflang="uk" lang="uk" data-lang="uk" translate="no">Українська</a><a href="/ar/guides/system-data-mac/" hreflang="ar" lang="ar" data-lang="ar" translate="no">العربية</a><a href="/zh-hans/guides/system-data-mac/" hreflang="zh-Hans" lang="zh-Hans" data-lang="zh-hans" translate="no">简体中文</a><a href="/zh-hant/guides/system-data-mac/" hreflang="zh-Hant" lang="zh-Hant" data-lang="zh-hant" translate="no">繁體中文</a><a href="/ja/guides/system-data-mac/" hreflang="ja" lang="ja" data-lang="ja" translate="no">日本語</a><a href="/ko/guides/system-data-mac/" hreflang="ko" lang="ko" data-lang="ko" translate="no">한국어</a><a href="/vi/guides/system-data-mac/" hreflang="vi" lang="vi" data-lang="vi" translate="no">Tiếng Việt</a></div></div>
+        <a class="btn btn-primary btn-sm dl-btn" href="/releases/DiskGarden-0.1.0.dmg" aria-label="Download"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg><span class="dl-label">Download<span class="label-long"> free</span></span></a>
+        <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mobile-nav">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Main">
+      <a href="/#features">Features</a>
+      <a href="/download/">Download</a>
+      <a href="/support/" aria-current="page">Support</a>
+      <a href="/guides/">Mac storage guides</a>
+      <a href="/releases/">Release notes</a>
+    </nav>
+  </header>
+<!-- /dg:header -->
+
+  <main class="wrap">
+<!-- dg:crumbs -->
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">DiskGarden</a> › <a href="/guides/">Guides</a> › <span>What is System Data?</span></nav>
+<!-- /dg:crumbs -->
+    <article class="prose-hero">
+      <h1>What is "System Data" on a Mac — and how do you shrink it?</h1>
+      <p class="lead">In System Settings → General → Storage, "System Data" is often one of the biggest bars, and macOS won't say what's in it. Here's what it contains, why it grows, and what you can safely do about it.</p>
+    </article>
+
+    <div class="prose">
+      <section id="what-it-is">
+        <h2>What System Data is</h2>
+        <p>System Data (older versions of macOS called it "Other") is the catch-all category in the Storage overview: everything that isn't an app, a document, a photo or another category macOS recognizes. It typically includes:</p>
+        <ul>
+          <li><b>Caches</b> — from macOS, browsers and apps, in <code>~/Library/Caches</code> and <code>/Library/Caches</code>.</li>
+          <li><b>Time Machine local snapshots</b> — copies of recently changed files kept on the startup disk.</li>
+          <li><b>Virtual machine and container disks</b> — Docker, Parallels, UTM and similar store whole disks as single large files.</li>
+          <li><b>Developer data</b> — Xcode build products, simulators and device symbols.</li>
+          <li><b>App support files</b> — databases, downloaded models, game assets and more in <code>~/Library/Application Support</code>.</li>
+          <li><b>Logs and temporary files</b>, and the files macOS uses for virtual memory and sleep in <code>/System/Volumes/VM</code>.</li>
+        </ul>
+      </section>
+
+      <section id="see-inside">
+        <h2>How to see what's inside</h2>
+        <p>The Storage screen doesn't break System Data down, and much of it lives in folders Finder hides. A disk space analyzer shows it folder by folder:</p>
+        <ol>
+          <li>Scan your startup disk with <a href="/download/">DiskGarden</a> (free).</li>
+          <li>Look at <b>Users → your name → Library</b>: <i>Caches</i>, <i>Application Support</i>, <i>Containers</i> and <i>Developer</i> are where most user-side System Data sits.</li>
+          <li>Space that DiskGarden can't read without extra rights — other users' files, protected system folders, snapshots — shows up as a purple <b>hidden space</b> petal. <a href="/user-guide/#administrator">Scan as administrator</a> to map it.</li>
+        </ol>
+      </section>
+
+      <section id="reduce">
+        <h2>How to reduce it safely</h2>
+        <h3>Restart, then wait a little</h3>
+        <p>macOS clears many temporary files and purgeable data on its own, especially after a restart. Check Storage again afterwards before deleting anything by hand.</p>
+        <h3 id="snapshots">Time Machine local snapshots</h3>
+        <p>macOS keeps local snapshots so you can restore recent files even when your backup disk isn't connected, and deletes them automatically when space runs low. To see them, open Terminal and run:</p>
+        <p><code>tmutil listlocalsnapshots /</code></p>
+        <p>To remove one, run <code>sudo tmutil deletelocalsnapshots</code> followed by its date (for example <code>2026-10-01-101500</code>). Only do this if you need the space right away.</p>
+        <h3>Caches</h3>
+        <p>Quit the app, then delete its folder in <code>~/Library/Caches</code>. Apps rebuild what they need, so this frees space but some of it comes back.</p>
+        <h3>Developer and container files</h3>
+        <ul>
+          <li>Delete <code>~/Library/Developer/Xcode/DerivedData</code> and old versions in <code>iOS DeviceSupport</code>.</li>
+          <li>Run <code>xcrun simctl delete unavailable</code> to remove simulators for runtimes you no longer have.</li>
+          <li>Run <code>docker system prune</code>, or lower Docker Desktop's disk limit.</li>
+          <li>Delete virtual machines you no longer use from inside their app.</li>
+        </ul>
+        <h3>App support data</h3>
+        <p>Large folders in <code>~/Library/Application Support</code> usually belong to an app: an old game, a music library, downloaded AI models. Remove the content from inside the app when you can, or delete the folder if you've already removed the app.</p>
+      </section>
+
+      <section id="dont-delete">
+        <h2>What not to delete</h2>
+        <ul>
+          <li>Anything in <code>/System</code>, <code>/usr</code>, <code>/bin</code> or <code>/private/var/db</code>.</li>
+          <li>The virtual memory and sleep files in <code>/System/Volumes/VM</code> — macOS manages them.</li>
+          <li>Folders in <code>/Library</code> you don't recognize: they often belong to drivers or system components.</li>
+        </ul>
+        <p>DiskGarden refuses to put system locations in the Waste bin, so you can explore freely without breaking anything.</p>
+      </section>
+
+<!-- dg:cta -->
+      <section class="article-cta">
+        <h2>See where your space went</h2>
+        <p>DiskGarden is a free disk space analyzer for Mac: it maps every folder by size, so the space hogs stand out. No account, and your files never leave your Mac.</p>
+        <p style="margin-top: 22px"><a class="btn btn-primary" href="/download/">Download DiskGarden — free</a></p>
+      </section>
+<!-- /dg:cta -->
+<!-- dg:related -->
+      <section class="related">
+        <h2>Related guides</h2>
+        <div class="grid3 learn"><a class="card guide" href="/guides/time-machine-local-snapshots/"><h3>Time Machine local snapshots</h3><p>What local snapshots are, how to list them, and when to delete them.</p></a><a class="card guide" href="/guides/macos-system-storage/"><h3>Why macOS takes so much space</h3><p>The system volume, Recovery, swap, downloaded assets and updates — and what you can reclaim.</p></a><a class="card guide" href="/guides/clear-cache-mac/"><h3>Clear caches safely</h3><p>Which caches are safe to delete, which to leave alone, and how much they free.</p></a></div>
+        <p style="margin-top: 22px"><a href="/guides/">All Mac storage guides →</a></p>
+      </section>
+<!-- /dg:related -->
+    </div>
+  </main>
+
+<!-- dg:footer -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="foot">
+        <div>
+          <a class="brand" href="/"><svg class="sprout" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M11.37 23.52Q10.32 17.76 11.37 12.00L13.05 12.00Q12.00 17.76 13.05 23.52ZM12.00 12.96Q1.92 12.48 2.34 2.40Q11.16 1.92 12.00 12.96ZM12.42 11.04Q13.26 0.48 21.66 0.48Q22.08 10.56 12.42 11.04Z"/></svg>DiskGarden</a>
+          <p>A free disk space analyzer for the Mac.</p>
+        </div>
+        <div class="foot-cols">
+          <div><p class="foot-h">Product</p><ul><li><a href="/#features">Features</a></li><li><a href="/download/">Download</a></li><li><a href="/releases/">Release notes</a></li></ul></div>
+          <div><p class="foot-h">Learn</p><ul><li><a href="/guides/">Mac storage guides</a></li><li><a href="/guides/free-up-space-on-mac/">Free up space on a Mac</a></li><li><a href="/guides/system-data-mac/">What is System Data?</a></li><li><a href="/user-guide/">User guide</a></li></ul></div>
+          <div><p class="foot-h">Support</p><ul><li><a href="/support/#faq">FAQ</a></li><li><a href="/support/#contact">Contact</a></li><li><a href="/privacy/">Privacy</a></li></ul></div>
+          <div><p class="foot-h">Company</p><ul><li><a href="/about/">About</a></li><li><a href="/terms/">Terms</a></li></ul></div>
+        </div>
+      </div>
+      <div class="legal"><span>© 2026 DiskGarden. DiskGarden is free software.</span><span>Apple, Mac and macOS are trademarks of Apple Inc.</span></div>
+    </div>
+  </footer>
+<!-- /dg:footer -->
+</body>
+</html>

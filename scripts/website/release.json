@@ -1,0 +1,27 @@
+{
+  "version": "0.1.0",
+  "released": null,
+  "minMacOS": "15",
+  "minMacOSName": "Sequoia",
+  "architectures": "Apple silicon",
+  "sizeMB": null,
+  "installedMB": null,
+  "dmg": "/releases/DiskGarden-0.1.0.dmg",
+  "sha256": null,
+  "signedBy": null,
+  "notarized": null,
+  "supportEmail": "support@diskgarden.app",
+  "languages": "English and 17 more",
+  "history": [
+    {
+      "version": "0.1.0",
+      "date": null,
+      "dmg": "/releases/DiskGarden-0.1.0.dmg",
+      "notes": [
+        "First release: the disk map, the Waste bin and a light mode.",
+        "Scan as administrator to map hidden space.",
+        "In 18 languages."
+      ]
+    }
+  ]
+}

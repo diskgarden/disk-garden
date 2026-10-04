@@ -1,0 +1,27 @@
+# DiskGarden
+
+> DiskGarden is a free disk space analyzer for Mac. It maps every file and folder on your disk as an interactive chart, shows hidden space, and lets you clear space safely. No account; scans stay on the Mac.
+
+- Requires macOS 15 or later. Free, no ads.
+
+## Pages
+- [Home](https://diskgarden.app/): what DiskGarden does
+- [Download](https://diskgarden.app/download/): download, requirements, install steps
+- [User guide](https://diskgarden.app/user-guide/)
+- [Support and FAQ](https://diskgarden.app/support/)
+- [Privacy](https://diskgarden.app/privacy/)
+
+## Mac storage guides
+- [Free up space on your Mac](https://diskgarden.app/guides/free-up-space-on-mac/): Find what's using your disk, where big files hide, and how to clear them safely.
+- [What is System Data?](https://diskgarden.app/guides/system-data-mac/): What macOS counts as System Data, why it grows so large, and how to shrink it.
+- [Why macOS takes so much space](https://diskgarden.app/guides/macos-system-storage/): The system volume, Recovery, swap, downloaded assets and updates — and what you can reclaim.
+- [Find large files](https://diskgarden.app/guides/find-large-files-mac/): Storage settings, a Finder size search, and a map of every folder at once.
+- [Clean up Xcode](https://diskgarden.app/guides/xcode-storage/): DerivedData, simulator runtimes, device support and archives — and how to clean them.
+- [Docker taking up space](https://diskgarden.app/guides/docker-storage-mac/): Why Docker.raw grows, how to see its real size, and how to reclaim the space.
+- [Old iPhone backups](https://diskgarden.app/guides/iphone-backups-mac/): Find and delete old device backups — and what to keep before you do.
+- [Time Machine local snapshots](https://diskgarden.app/guides/time-machine-local-snapshots/): What local snapshots are, how to list them, and when to delete them.
+- [Purgeable space](https://diskgarden.app/guides/purgeable-space-mac/): Why the disk can look full even when macOS calls space purgeable.
+- [Spotlight's index](https://diskgarden.app/guides/spotlight-index-mac/): How big the Spotlight index is, why it balloons, and how to rebuild it.
+- [Apple Intelligence storage](https://diskgarden.app/guides/apple-intelligence-storage/): How much space the on-device models need, and how to get it back.
+- [Do you need a Mac cleaner?](https://diskgarden.app/guides/mac-cleaner-apps/): What cleaners really remove, why the space comes back, and what works better.
+- [Clear caches safely](https://diskgarden.app/guides/clear-cache-mac/): Which caches are safe to delete, which to leave alone, and how much they free.

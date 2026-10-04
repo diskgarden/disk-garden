@@ -1,0 +1,44 @@
+# Publishes website/ to GitHub Pages (https://diskgarden.app). The app's update feed is website/appcast.xml (copied
+# here by the app repo's scripts/publish-update.sh), served at https://diskgarden.app/appcast.xml. See docs/WEBSITE.md.
+name: Website
+
+on:
+  push:
+    branches: [main]
+    paths: ["website/**", "scripts/**", ".github/workflows/pages.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Bake shared parts (head, header, footer, release facts, sitemap)
+        run: python3 scripts/build-website.py
+      - name: Assemble the site
+        run: |
+          mkdir -p _site
+          cp -R website/. _site/
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Minify scripts (the repo keeps the readable sources)
+        run: npx --yes esbuild@0.24 _site/assets/site.js _site/assets/bloom.js --minify --outdir=_site/assets --allow-overwrite
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v4

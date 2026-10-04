@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- dg:head -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How to Free Up Space on Your Mac — Find What&#x27;s Using It</title>
+  <meta name="description" content="Mac disk almost full? Find what&#x27;s taking up space, where big files hide (backups, Xcode, Docker, caches, Downloads) and how to clear them safely.">
+  <link rel="canonical" href="https://diskgarden.app/guides/free-up-space-on-mac/">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+  <link rel="alternate" hreflang="en" href="https://diskgarden.app/guides/free-up-space-on-mac/">
+  <link rel="alternate" hreflang="es" href="https://diskgarden.app/es/guides/free-up-space-on-mac/">
+  <link rel="alternate" hreflang="pt-BR" href="https://diskgarden.app/pt-br/guides/free-up-space-on-mac/">
+  <link rel="alternate" hreflang="pt-PT" href="https://diskgarden.app/pt-pt/guides/free-up-space-on-mac/">
+  <link rel="alternate" hreflang="fr" href="https://diskgarden.app/fr/guides/free-up-space-on-mac/">
+  <link rel="alternate" hreflang="it" href="https://diskgarden.app/it/guides/free-up-space-on-mac/">
+  <link rel="alternate" hreflang="de" href="https://diskgarden.app/de/guides/free-up-space-on-mac/">
+  <link rel="alternate" hreflang="sv" href="https://diskgarden.app/sv/guides/free-up-space-on-mac/">
+  <link rel="alternate" hreflang="pl" href="https://diskgarden.app/pl/guides/free-up-space-on-mac/">
+  <link rel="alternate" hreflang="tr" href="https://diskgarden.app/tr/guides/free-up-space-on-mac/">
+  <link rel="alternate" hreflang="ru" href="https://diskgarden.app/ru/guides/free-up-space-on-mac/">
+  <link rel="alternate" hreflang="uk" href="https://diskgarden.app/uk/guides/free-up-space-on-mac/">
+  <link rel="alternate" hreflang="ar" href="https://diskgarden.app/ar/guides/free-up-space-on-mac/">
+  <link rel="alternate" hreflang="zh-Hans" href="https://diskgarden.app/zh-hans/guides/free-up-space-on-mac/">
+  <link rel="alternate" hreflang="zh-Hant" href="https://diskgarden.app/zh-hant/guides/free-up-space-on-mac/">
+  <link rel="alternate" hreflang="ja" href="https://diskgarden.app/ja/guides/free-up-space-on-mac/">
+  <link rel="alternate" hreflang="ko" href="https://diskgarden.app/ko/guides/free-up-space-on-mac/">
+  <link rel="alternate" hreflang="vi" href="https://diskgarden.app/vi/guides/free-up-space-on-mac/">
+  <link rel="alternate" hreflang="x-default" href="https://diskgarden.app/guides/free-up-space-on-mac/">
+  <meta name="theme-color" content="#0f1513">
+  <meta name="color-scheme" content="dark">
+  <meta property="og:site_name" content="DiskGarden">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="How to Free Up Space on Your Mac — Find What&#x27;s Using It">
+  <meta property="og:description" content="Mac disk almost full? Find what&#x27;s taking up space, where big files hide (backups, Xcode, Docker, caches, Downloads) and how to clear them safely.">
+  <meta property="og:url" content="https://diskgarden.app/guides/free-up-space-on-mac/">
+  <meta property="og:image" content="https://diskgarden.app/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="DiskGarden: a disk space map of a Mac, drawn as a colorful bloom">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How to Free Up Space on Your Mac — Find What&#x27;s Using It">
+  <meta name="twitter:description" content="Mac disk almost full? Find what&#x27;s taking up space, where big files hide (backups, Xcode, Docker, caches, Downloads) and how to clear them safely.">
+  <meta name="twitter:image" content="https://diskgarden.app/assets/og-image.png">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="stylesheet" href="/assets/site.min.css">
+  <script>document.documentElement.classList.add("js")</script>
+  <script>(function(){try{if(localStorage.getItem('dg-lang'))return}catch(e){}if(/bot|crawl|spider|slurp|lighthouse|headless/i.test(navigator.userAgent))return;var S=["es", "fr", "it", "de", "sv", "pl", "tr", "ru", "uk", "ar", "ja", "ko", "vi"],L=navigator.languages||[navigator.language||''];for(var i=0;i<L.length;i++){var l=(L[i]||'').toLowerCase(),f=null;if(l.indexOf('en')===0)return;if(/^zh-(tw|hk|mo|hant)/.test(l))f='zh-hant';else if(l.indexOf('zh')===0)f='zh-hans';else if(l==='pt-pt')f='pt-pt';else if(l.indexOf('pt')===0)f='pt-br';else if(S.indexOf(l.slice(0,2))>=0)f=l.slice(0,2);if(f){location.replace('/'+f+location.pathname+location.search+location.hash);return}}})()</script>
+  <script src="/assets/site.js" defer></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://diskgarden.app/#org","name":"DiskGarden","url":"https://diskgarden.app/","logo":"https://diskgarden.app/assets/app-icon-512.png","contactPoint":{"@type":"ContactPoint","contactType":"customer support","email":"support@diskgarden.app"}},{"@type":"WebSite","@id":"https://diskgarden.app/#website","name":"DiskGarden","url":"https://diskgarden.app/","publisher":{"@id":"https://diskgarden.app/#org"},"inLanguage":"en"},{"@type":"TechArticle","headline":"How to free up space on your Mac","description":"Mac disk almost full? Find what's taking up space, where big files hide (backups, Xcode, Docker, caches, Downloads) and how to clear them safely.","url":"https://diskgarden.app/guides/free-up-space-on-mac/","dateModified":"2026-10-04","inLanguage":"en","author":{"@id":"https://diskgarden.app/#org"},"publisher":{"@id":"https://diskgarden.app/#org"},"image":"https://diskgarden.app/assets/og-image.png","about":{"@id":"https://diskgarden.app/#app"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DiskGarden","item":"https://diskgarden.app/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://diskgarden.app/guides/"},{"@type":"ListItem","position":3,"name":"Free up space on your Mac","item":"https://diskgarden.app/guides/free-up-space-on-mac/"}]}]}</script>
+<!-- /dg:head -->
+</head>
+<body data-page="article">
+<!-- dg:header -->
+  <header class="site-header">
+    <div class="bar">
+      <a class="brand" href="/" aria-label="DiskGarden home"><svg class="sprout" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M11.37 23.52Q10.32 17.76 11.37 12.00L13.05 12.00Q12.00 17.76 13.05 23.52ZM12.00 12.96Q1.92 12.48 2.34 2.40Q11.16 1.92 12.00 12.96ZM12.42 11.04Q13.26 0.48 21.66 0.48Q22.08 10.56 12.42 11.04Z"/></svg>DiskGarden</a>
+      <nav class="nav" aria-label="Main">
+        <a href="/#features">Features</a>
+        <a href="/download/">Download</a>
+        <a href="/support/" aria-current="page">Support</a>
+      </nav>
+      <div class="header-cta">
+        <div class="lang"><button class="lang-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Language"><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.6 2.4 2.6 14.6 0 17M12 3.5c-2.6 2.4-2.6 14.6 0 17"/></g></svg><span translate="no">EN</span></button><div class="lang-menu" role="menu"><a href="/guides/free-up-space-on-mac/" hreflang="en" lang="en" data-lang="en" aria-current="true" translate="no">English</a><a href="/es/guides/free-up-space-on-mac/" hreflang="es" lang="es" data-lang="es" translate="no">Español</a><a href="/pt-br/guides/free-up-space-on-mac/" hreflang="pt-BR" lang="pt-BR" data-lang="pt-br" translate="no">Português (Brasil)</a><a href="/pt-pt/guides/free-up-space-on-mac/" hreflang="pt-PT" lang="pt-PT" data-lang="pt-pt" translate="no">Português (Portugal)</a><a href="/fr/guides/free-up-space-on-mac/" hreflang="fr" lang="fr" data-lang="fr" translate="no">Français</a><a href="/it/guides/free-up-space-on-mac/" hreflang="it" lang="it" data-lang="it" translate="no">Italiano</a><a href="/de/guides/free-up-space-on-mac/" hreflang="de" lang="de" data-lang="de" translate="no">Deutsch</a><a href="/sv/guides/free-up-space-on-mac/" hreflang="sv" lang="sv" data-lang="sv" translate="no">Svenska</a><a href="/pl/guides/free-up-space-on-mac/" hreflang="pl" lang="pl" data-lang="pl" translate="no">Polski</a><a href="/tr/guides/free-up-space-on-mac/" hreflang="tr" lang="tr" data-lang="tr" translate="no">Türkçe</a><a href="/ru/guides/free-up-space-on-mac/" hreflang="ru" lang="ru" data-lang="ru" translate="no">Русский</a><a href="/uk/guides/free-up-space-on-mac/" hreflang="uk" lang="uk" data-lang="uk" translate="no">Українська</a><a href="/ar/guides/free-up-space-on-mac/" hreflang="ar" lang="ar" data-lang="ar" translate="no">العربية</a><a href="/zh-hans/guides/free-up-space-on-mac/" hreflang="zh-Hans" lang="zh-Hans" data-lang="zh-hans" translate="no">简体中文</a><a href="/zh-hant/guides/free-up-space-on-mac/" hreflang="zh-Hant" lang="zh-Hant" data-lang="zh-hant" translate="no">繁體中文</a><a href="/ja/guides/free-up-space-on-mac/" hreflang="ja" lang="ja" data-lang="ja" translate="no">日本語</a><a href="/ko/guides/free-up-space-on-mac/" hreflang="ko" lang="ko" data-lang="ko" translate="no">한국어</a><a href="/vi/guides/free-up-space-on-mac/" hreflang="vi" lang="vi" data-lang="vi" translate="no">Tiếng Việt</a></div></div>
+        <a class="btn btn-primary btn-sm dl-btn" href="/releases/DiskGarden-0.1.0.dmg" aria-label="Download"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg><span class="dl-label">Download<span class="label-long"> free</span></span></a>
+        <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mobile-nav">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Main">
+      <a href="/#features">Features</a>
+      <a href="/download/">Download</a>
+      <a href="/support/" aria-current="page">Support</a>
+      <a href="/guides/">Mac storage guides</a>
+      <a href="/releases/">Release notes</a>
+    </nav>
+  </header>
+<!-- /dg:header -->
+
+  <main class="wrap">
+<!-- dg:crumbs -->
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">DiskGarden</a> › <a href="/guides/">Guides</a> › <span>Free up space on your Mac</span></nav>
+<!-- /dg:crumbs -->
+    <article class="prose-hero">
+      <h1>How to free up space on your Mac</h1>
+      <p class="lead">"Your disk is almost full." Here's how to find out what is actually using the space on your Mac, where the big files usually hide, and how to clear them out without breaking anything.</p>
+    </article>
+
+    <div class="prose">
+      <section id="check-storage">
+        <h2>1. See how much space you have</h2>
+        <p>Open <b>System Settings → General → Storage</b>. The bar at the top shows how full your startup disk is, split into categories such as Applications, Documents, Photos, iOS Files and <a href="/guides/system-data-mac/">System Data</a>.</p>
+        <p>Below the bar, macOS offers a few <b>recommendations</b> worth a look:</p>
+        <ul>
+          <li><b>Store in iCloud</b> keeps full-size photos and documents in iCloud and only recent ones on the Mac.</li>
+          <li><b>Optimize Storage</b> removes Apple TV movies and shows you've already watched.</li>
+          <li><b>Empty Trash Automatically</b> deletes items that have been in the Trash for 30 days.</li>
+        </ul>
+        <p>What the Storage screen doesn't tell you is <i>which</i> folders are big. "Documents: 180 GB" could be one forgotten video project or a thousand small files.</p>
+      </section>
+
+      <section id="find-what-uses-space">
+        <h2>2. Find what's actually using it</h2>
+        <p>Finder can show folder sizes — in a list view, choose <b>View → Show View Options</b> and turn on <b>Calculate all sizes</b> — but you have to open every folder one by one, and it skips the parts of the disk Finder hides.</p>
+        <p>A <b>disk space analyzer</b> scans the whole disk at once and shows every folder by size. <a href="/download/">DiskGarden</a> is a free one for the Mac:</p>
+        <ol>
+          <li>Open DiskGarden and click your startup disk (usually "Macintosh HD"). A full scan takes seconds to a couple of minutes.</li>
+          <li>The disk appears as a bloom: each ring is a level of folders, and each petal is as wide as the space it takes. The widest petals are your biggest folders.</li>
+          <li>Hover a petal to see its name and size, click to grow into it, and keep going until you find the files that matter.</li>
+          <li>Drag what you don't need into the <b>Waste bin</b>. Nothing is deleted until you review the pile and empty it — and by default it goes to the Trash first.</li>
+        </ol>
+        <p class="note">If the total doesn't add up to what macOS reports, part of the disk is off limits to normal apps. <a href="/user-guide/#administrator">Scan as administrator</a> to map it too.</p>
+      </section>
+
+      <section id="usual-suspects">
+        <h2>3. Where the space usually goes</h2>
+        <p>On most Macs a handful of places account for most of the space. Check these first:</p>
+        <h3>Downloads and old installers</h3>
+        <p><code>~/Downloads</code> quietly collects disk images (.dmg), zip files and installers you only needed once. Sort by size and clear out what you've already installed.</p>
+        <h3>iPhone and iPad backups</h3>
+        <p>Local device backups can take tens of gigabytes each. With a device connected, select it in Finder's sidebar and click <b>Manage Backups</b>; or look directly in <code>~/Library/Application Support/MobileSync/Backup</code>. Delete backups of devices you no longer own.</p>
+        <h3>Developer files</h3>
+        <ul>
+          <li><b>Xcode DerivedData</b> (<code>~/Library/Developer/Xcode/DerivedData</code>) is build output; it's safe to delete and rebuilds when needed.</li>
+          <li><b>iOS DeviceSupport</b> (<code>~/Library/Developer/Xcode/iOS DeviceSupport</code>) keeps symbols for every iOS version you've ever connected; old versions can go.</li>
+          <li><b>Simulators</b>: <code>xcrun simctl delete unavailable</code> removes simulators for runtimes you no longer have.</li>
+          <li><b>Docker</b> stores everything in one large disk image. Use <code>docker system prune</code>, or lower the disk limit in Docker Desktop's settings.</li>
+          <li><b>Package caches</b>: <code>brew cleanup</code> for Homebrew, and the caches in <code>~/.npm</code>, <code>~/.gradle/caches</code> and <code>~/.cargo</code> can be cleared and re-downloaded.</li>
+        </ul>
+        <h3>Caches</h3>
+        <p><code>~/Library/Caches</code> holds data apps can re-create, like browser caches and app updates. Quit the app first, then delete its cache folder. Expect it to grow back somewhat as you use the app.</p>
+        <h3>Photos, videos and music</h3>
+        <p>A Photos library or a folder of screen recordings and exported videos is often the single biggest item. With iCloud Photos, turn on <b>Optimize Mac Storage</b> in Photos settings to keep smaller versions on the Mac.</p>
+        <h3>Mail attachments</h3>
+        <p>Attachments you've opened are kept in <code>~/Library/Containers/com.apple.mail/Data/Library/Mail Downloads</code>.</p>
+        <h3>Apps you no longer use</h3>
+        <p>Large apps and their support files — GarageBand's and Logic's sound libraries, games, old Xcode versions — are easy to spot in the Applications folder and in <code>~/Library/Application Support</code>.</p>
+      </section>
+
+      <section id="delete-safely">
+        <h2>4. Delete safely</h2>
+        <ul>
+          <li><b>Don't touch system folders.</b> <code>/System</code>, <code>/Library</code>, <code>/usr</code> and <code>/private</code> belong to macOS. DiskGarden shows them so you understand your disk, but won't let you put them in the Waste bin.</li>
+          <li><b>Prefer the Trash.</b> Moving files to the Trash gives you a way back. Empty it once you're sure.</li>
+          <li><b>Keep a backup</b> of anything irreplaceable before a big cleanup.</li>
+        </ul>
+      </section>
+
+      <section id="space-not-freed">
+        <h2>5. Freed space not showing up?</h2>
+        <p>macOS doesn't always hand space back immediately:</p>
+        <ul>
+          <li>Files in the <b>Trash</b> still take space until you empty it.</li>
+          <li><b>Time Machine local snapshots</b> can keep deleted files on disk for a while. macOS removes them when it needs the space; see <a href="/guides/system-data-mac/#snapshots">System Data</a>.</li>
+          <li>Some space is <b>purgeable</b>: macOS counts it as used, but frees it automatically when an app needs it. DiskGarden shows this as <b>Free + purgeable</b>.</li>
+        </ul>
+        <p>A restart often settles the numbers.</p>
+      </section>
+
+<!-- dg:cta -->
+      <section class="article-cta">
+        <h2>See where your space went</h2>
+        <p>DiskGarden is a free disk space analyzer for Mac: it maps every folder by size, so the space hogs stand out. No account, and your files never leave your Mac.</p>
+        <p style="margin-top: 22px"><a class="btn btn-primary" href="/download/">Download DiskGarden — free</a></p>
+      </section>
+<!-- /dg:cta -->
+<!-- dg:related -->
+      <section class="related">
+        <h2>Related guides</h2>
+        <div class="grid3 learn"><a class="card guide" href="/guides/find-large-files-mac/"><h3>Find large files</h3><p>Storage settings, a Finder size search, and a map of every folder at once.</p></a><a class="card guide" href="/guides/system-data-mac/"><h3>What is System Data?</h3><p>What macOS counts as System Data, why it grows so large, and how to shrink it.</p></a><a class="card guide" href="/guides/purgeable-space-mac/"><h3>Purgeable space</h3><p>Why the disk can look full even when macOS calls space purgeable.</p></a></div>
+        <p style="margin-top: 22px"><a href="/guides/">All Mac storage guides →</a></p>
+      </section>
+<!-- /dg:related -->
+    </div>
+  </main>
+
+<!-- dg:footer -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="foot">
+        <div>
+          <a class="brand" href="/"><svg class="sprout" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M11.37 23.52Q10.32 17.76 11.37 12.00L13.05 12.00Q12.00 17.76 13.05 23.52ZM12.00 12.96Q1.92 12.48 2.34 2.40Q11.16 1.92 12.00 12.96ZM12.42 11.04Q13.26 0.48 21.66 0.48Q22.08 10.56 12.42 11.04Z"/></svg>DiskGarden</a>
+          <p>A free disk space analyzer for the Mac.</p>
+        </div>
+        <div class="foot-cols">
+          <div><p class="foot-h">Product</p><ul><li><a href="/#features">Features</a></li><li><a href="/download/">Download</a></li><li><a href="/releases/">Release notes</a></li></ul></div>
+          <div><p class="foot-h">Learn</p><ul><li><a href="/guides/">Mac storage guides</a></li><li><a href="/guides/free-up-space-on-mac/">Free up space on a Mac</a></li><li><a href="/guides/system-data-mac/">What is System Data?</a></li><li><a href="/user-guide/">User guide</a></li></ul></div>
+          <div><p class="foot-h">Support</p><ul><li><a href="/support/#faq">FAQ</a></li><li><a href="/support/#contact">Contact</a></li><li><a href="/privacy/">Privacy</a></li></ul></div>
+          <div><p class="foot-h">Company</p><ul><li><a href="/about/">About</a></li><li><a href="/terms/">Terms</a></li></ul></div>
+        </div>
+      </div>
+      <div class="legal"><span>© 2026 DiskGarden. DiskGarden is free software.</span><span>Apple, Mac and macOS are trademarks of Apple Inc.</span></div>
+    </div>
+  </footer>
+<!-- /dg:footer -->
+</body>
+</html>

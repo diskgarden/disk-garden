@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- dg:head -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DiskGarden Support — Guides, FAQ and Contact</title>
+  <meta name="description" content="Help with DiskGarden: guides for scanning, reading the disk map, the Waste bin and Full Disk Access, answers to common questions, and a person to write to.">
+  <link rel="canonical" href="https://diskgarden.app/support/">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+  <link rel="alternate" hreflang="en" href="https://diskgarden.app/support/">
+  <link rel="alternate" hreflang="es" href="https://diskgarden.app/es/support/">
+  <link rel="alternate" hreflang="pt-BR" href="https://diskgarden.app/pt-br/support/">
+  <link rel="alternate" hreflang="pt-PT" href="https://diskgarden.app/pt-pt/support/">
+  <link rel="alternate" hreflang="fr" href="https://diskgarden.app/fr/support/">
+  <link rel="alternate" hreflang="it" href="https://diskgarden.app/it/support/">
+  <link rel="alternate" hreflang="de" href="https://diskgarden.app/de/support/">
+  <link rel="alternate" hreflang="sv" href="https://diskgarden.app/sv/support/">
+  <link rel="alternate" hreflang="pl" href="https://diskgarden.app/pl/support/">
+  <link rel="alternate" hreflang="tr" href="https://diskgarden.app/tr/support/">
+  <link rel="alternate" hreflang="ru" href="https://diskgarden.app/ru/support/">
+  <link rel="alternate" hreflang="uk" href="https://diskgarden.app/uk/support/">
+  <link rel="alternate" hreflang="ar" href="https://diskgarden.app/ar/support/">
+  <link rel="alternate" hreflang="zh-Hans" href="https://diskgarden.app/zh-hans/support/">
+  <link rel="alternate" hreflang="zh-Hant" href="https://diskgarden.app/zh-hant/support/">
+  <link rel="alternate" hreflang="ja" href="https://diskgarden.app/ja/support/">
+  <link rel="alternate" hreflang="ko" href="https://diskgarden.app/ko/support/">
+  <link rel="alternate" hreflang="vi" href="https://diskgarden.app/vi/support/">
+  <link rel="alternate" hreflang="x-default" href="https://diskgarden.app/support/">
+  <meta name="theme-color" content="#0f1513">
+  <meta name="color-scheme" content="dark">
+  <meta property="og:site_name" content="DiskGarden">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="DiskGarden Support — Guides, FAQ and Contact">
+  <meta property="og:description" content="Help with DiskGarden: guides for scanning, reading the disk map, the Waste bin and Full Disk Access, answers to common questions, and a person to write to.">
+  <meta property="og:url" content="https://diskgarden.app/support/">
+  <meta property="og:image" content="https://diskgarden.app/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="DiskGarden: a disk space map of a Mac, drawn as a colorful bloom">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="DiskGarden Support — Guides, FAQ and Contact">
+  <meta name="twitter:description" content="Help with DiskGarden: guides for scanning, reading the disk map, the Waste bin and Full Disk Access, answers to common questions, and a person to write to.">
+  <meta name="twitter:image" content="https://diskgarden.app/assets/og-image.png">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="stylesheet" href="/assets/site.min.css">
+  <script>document.documentElement.classList.add("js")</script>
+  <script>(function(){try{if(localStorage.getItem('dg-lang'))return}catch(e){}if(/bot|crawl|spider|slurp|lighthouse|headless/i.test(navigator.userAgent))return;var S=["es", "fr", "it", "de", "sv", "pl", "tr", "ru", "uk", "ar", "ja", "ko", "vi"],L=navigator.languages||[navigator.language||''];for(var i=0;i<L.length;i++){var l=(L[i]||'').toLowerCase(),f=null;if(l.indexOf('en')===0)return;if(/^zh-(tw|hk|mo|hant)/.test(l))f='zh-hant';else if(l.indexOf('zh')===0)f='zh-hans';else if(l==='pt-pt')f='pt-pt';else if(l.indexOf('pt')===0)f='pt-br';else if(S.indexOf(l.slice(0,2))>=0)f=l.slice(0,2);if(f){location.replace('/'+f+location.pathname+location.search+location.hash);return}}})()</script>
+  <script src="/assets/site.js" defer></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://diskgarden.app/#org","name":"DiskGarden","url":"https://diskgarden.app/","logo":"https://diskgarden.app/assets/app-icon-512.png","contactPoint":{"@type":"ContactPoint","contactType":"customer support","email":"support@diskgarden.app"}},{"@type":"WebSite","@id":"https://diskgarden.app/#website","name":"DiskGarden","url":"https://diskgarden.app/","publisher":{"@id":"https://diskgarden.app/#org"},"inLanguage":"en"},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why doesn't the map add up to my disk size?","acceptedAnswer":{"@type":"Answer","text":"Without Full Disk Access, macOS hides other users' folders, some caches and purgeable space. Scan as administrator and the purple \"hidden space\" petal fills in the difference."}},{"@type":"Question","name":"What is \"System Data\" and how do I reduce it?","acceptedAnswer":{"@type":"Answer","text":"It's the catch-all category in Storage settings: caches, Time Machine local snapshots, app support data, logs, and virtual machine or Docker disks. Scan your disk with DiskGarden to see it folder by folder; our guide What is System Data on a Mac explains what's safe to remove."}},{"@type":"Question","name":"How do I free up space on my Mac?","acceptedAnswer":{"@type":"Answer","text":"Find the biggest folders first — scan with DiskGarden and follow the widest petals — then check the usual suspects: Downloads, old iPhone backups, Xcode and Docker data, caches and videos. The full walkthrough: How to free up space on your Mac."}},{"@type":"Question","name":"Is it safe to empty the Waste bin?","acceptedAnswer":{"@type":"Answer","text":"Yes, as long as you've looked over what's in it. DiskGarden only removes what you put there, shows each item's size and path first, and refuses to take system folders such as /System, /Library and /usr. On the map, press Space to Quick Look anything before you drop it in; in the Waste bin, right-click an item to show it in Finder or take it back out.By default, emptying moves the items to the Trash, so you can still get them back from there."}},{"@type":"Question","name":"Can I scan an external drive or a network share?","acceptedAnswer":{"@type":"Answer","text":"Yes. Every volume your Mac has mounted — USB and Thunderbolt drives, SD cards, disk images, Time Machine disks and network shares — shows up on the Volumes page. Network shares scan more slowly, since every folder is read over the network."}},{"@type":"Question","name":"What are \"smaller objects\"?","acceptedAnswer":{"@type":"Answer","text":"Files and folders too small to draw as their own petal are gathered into one grey petal per folder, so the map stays readable. Grow into the folder to see them individually."}},{"@type":"Question","name":"Does DiskGarden delete caches or \"system data\" for me?","acceptedAnswer":{"@type":"Answer","text":"No. DiskGarden never deletes anything on its own. It shows you where the space went; you decide what goes into the Waste bin, and nothing is removed until you empty it."}},{"@type":"Question","name":"Where do files in the Waste bin go?","acceptedAnswer":{"@type":"Answer","text":"Nowhere, until you empty the Waste bin: the files stay exactly where they are. When you empty it they move to the Trash, or — if you turned off \"Emptying moves files to the Trash\" in Settings — they're deleted right away."}},{"@type":"Question","name":"Is it really free?","acceptedAnswer":{"@type":"Answer","text":"Yes. Every feature, no time limit, no account and no ads."}},{"@type":"Question","name":"Does DiskGarden send my data anywhere?","acceptedAnswer":{"@type":"Answer","text":"Your scans stay on your Mac. DiskGarden goes online only to check for updates and, if it crashes, to send a crash report. The privacy page has the details."}},{"@type":"Question","name":"How do I uninstall it?","acceptedAnswer":{"@type":"Answer","text":"Quit DiskGarden and drag it from Applications to the Trash. To also remove its saved scans and settings, delete ~/Library/Application Support/DiskGarden and ~/Library/Preferences/app.diskgarden.DiskGarden.plist. If you granted Full Disk Access, remove DiskGarden from System Settings → Privacy & Security → Full Disk Access."}}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DiskGarden","item":"https://diskgarden.app/"},{"@type":"ListItem","position":2,"name":"Support","item":"https://diskgarden.app/support/"}]}]}</script>
+<!-- /dg:head -->
+</head>
+<body data-page="support">
+<!-- dg:header -->
+  <header class="site-header">
+    <div class="bar">
+      <a class="brand" href="/" aria-label="DiskGarden home"><svg class="sprout" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M11.37 23.52Q10.32 17.76 11.37 12.00L13.05 12.00Q12.00 17.76 13.05 23.52ZM12.00 12.96Q1.92 12.48 2.34 2.40Q11.16 1.92 12.00 12.96ZM12.42 11.04Q13.26 0.48 21.66 0.48Q22.08 10.56 12.42 11.04Z"/></svg>DiskGarden</a>
+      <nav class="nav" aria-label="Main">
+        <a href="/#features">Features</a>
+        <a href="/download/">Download</a>
+        <a href="/support/" aria-current="page">Support</a>
+      </nav>
+      <div class="header-cta">
+        <div class="lang"><button class="lang-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Language"><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.6 2.4 2.6 14.6 0 17M12 3.5c-2.6 2.4-2.6 14.6 0 17"/></g></svg><span translate="no">EN</span></button><div class="lang-menu" role="menu"><a href="/support/" hreflang="en" lang="en" data-lang="en" aria-current="true" translate="no">English</a><a href="/es/support/" hreflang="es" lang="es" data-lang="es" translate="no">Español</a><a href="/pt-br/support/" hreflang="pt-BR" lang="pt-BR" data-lang="pt-br" translate="no">Português (Brasil)</a><a href="/pt-pt/support/" hreflang="pt-PT" lang="pt-PT" data-lang="pt-pt" translate="no">Português (Portugal)</a><a href="/fr/support/" hreflang="fr" lang="fr" data-lang="fr" translate="no">Français</a><a href="/it/support/" hreflang="it" lang="it" data-lang="it" translate="no">Italiano</a><a href="/de/support/" hreflang="de" lang="de" data-lang="de" translate="no">Deutsch</a><a href="/sv/support/" hreflang="sv" lang="sv" data-lang="sv" translate="no">Svenska</a><a href="/pl/support/" hreflang="pl" lang="pl" data-lang="pl" translate="no">Polski</a><a href="/tr/support/" hreflang="tr" lang="tr" data-lang="tr" translate="no">Türkçe</a><a href="/ru/support/" hreflang="ru" lang="ru" data-lang="ru" translate="no">Русский</a><a href="/uk/support/" hreflang="uk" lang="uk" data-lang="uk" translate="no">Українська</a><a href="/ar/support/" hreflang="ar" lang="ar" data-lang="ar" translate="no">العربية</a><a href="/zh-hans/support/" hreflang="zh-Hans" lang="zh-Hans" data-lang="zh-hans" translate="no">简体中文</a><a href="/zh-hant/support/" hreflang="zh-Hant" lang="zh-Hant" data-lang="zh-hant" translate="no">繁體中文</a><a href="/ja/support/" hreflang="ja" lang="ja" data-lang="ja" translate="no">日本語</a><a href="/ko/support/" hreflang="ko" lang="ko" data-lang="ko" translate="no">한국어</a><a href="/vi/support/" hreflang="vi" lang="vi" data-lang="vi" translate="no">Tiếng Việt</a></div></div>
+        <a class="btn btn-primary btn-sm dl-btn" href="/releases/DiskGarden-0.1.0.dmg" aria-label="Download"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg><span class="dl-label">Download<span class="label-long"> free</span></span></a>
+        <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mobile-nav">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Main">
+      <a href="/#features">Features</a>
+      <a href="/download/">Download</a>
+      <a href="/support/" aria-current="page">Support</a>
+      <a href="/guides/">Mac storage guides</a>
+      <a href="/releases/">Release notes</a>
+    </nav>
+  </header>
+<!-- /dg:header -->
+
+  <main class="wrap">
+    <section class="sup-hero">
+      <h1>How can we help?</h1>
+      <p class="lead">Guides for every part of DiskGarden, answers to the usual questions, and a real inbox.</p>
+      <label class="search">
+        <span class="visually-hidden">Search guides and questions</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4 4"/></g></svg>
+        <input type="search" data-search placeholder="Search guides, e.g. “Full Disk Access”" autocomplete="off">
+      </label>
+    </section>
+
+    <section style="padding: 56px 0 0">
+      <h2 class="h2">Guides</h2>
+      <div class="grid3">
+        <a class="card guide" href="/user-guide/#getting-started" data-searchable>
+          <span class="icon-tile"><svg viewBox="0 0 24 24"><path fill="#1ed660" d="M11.37 23.52Q10.32 17.76 11.37 12.00L13.05 12.00Q12.00 17.76 13.05 23.52ZM12.00 12.96Q1.92 12.48 2.34 2.40Q11.16 1.92 12.00 12.96ZM12.42 11.04Q13.26 0.48 21.66 0.48Q22.08 10.56 12.42 11.04Z"/></svg></span>
+          <h3>Getting started</h3>
+          <p>Install, pick a volume, run your first scan and read the result.</p>
+        </a>
+        <a class="card guide" href="/user-guide/#reading-the-map" data-searchable>
+          <span class="icon-tile"><svg viewBox="0 0 24 24"><g fill="none" stroke="#ff893d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3.5 2"/></g></svg></span>
+          <h3>Reading the map</h3>
+          <p>Rings, petals, colours, the grey "smaller objects" and the purple hidden space.</p>
+        </a>
+        <a class="card guide" href="/user-guide/#waste-bin" data-searchable>
+          <span class="icon-tile"><svg viewBox="0 0 24 24"><path fill="none" stroke="#ff5b4f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M4.5 7h15M9.5 7V4.5h5V7m-8 0 .8 12a1.5 1.5 0 0 0 1.5 1.4h6.4a1.5 1.5 0 0 0 1.5-1.4L18 7"/></svg></span>
+          <h3>Waste bin &amp; safety</h3>
+          <p>What happens when you drop, review, put back or empty — and what can never go in the Waste bin.</p>
+        </a>
+        <a class="card guide" href="/user-guide/#administrator" data-searchable>
+          <span class="icon-tile"><svg viewBox="0 0 24 24"><g fill="none" stroke="#c56cf0" stroke-width="2" stroke-linecap="round"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></g></svg></span>
+          <h3>Scanning as administrator</h3>
+          <p>Granting Full Disk Access, what it reveals, and how to revoke it later.</p>
+        </a>
+        <a class="card guide" href="/user-guide/#external-drives" data-searchable>
+          <span class="icon-tile"><svg viewBox="0 0 24 24"><g fill="none" stroke="#4fa3ff" stroke-width="2" stroke-linecap="round"><rect x="3" y="7" width="18" height="10" rx="3"/><path d="M3 13.5h18M16.5 15.5h.01"/></g></svg></span>
+          <h3>External drives &amp; disk images</h3>
+          <p>USB, Thunderbolt, network shares, .dmg files and Time Machine volumes.</p>
+        </a>
+        <a class="card guide" href="/user-guide/#shortcuts" data-searchable>
+          <span class="icon-tile"><svg viewBox="0 0 24 24"><g fill="none" stroke="#f06aa8" stroke-width="2" stroke-linecap="round"><rect x="3" y="6" width="18" height="12" rx="3"/><path d="M7 10h.01M10.5 10h.01M14 10h.01M17 10h.01M8 14h8"/></g></svg></span>
+          <h3>Keyboard shortcuts</h3>
+          <p>Navigate the map, Quick Look, Show in Finder and fill the Waste bin without the mouse.</p>
+        </a>
+      </div>
+    </section>
+
+    <section class="qa-grid" id="faq" style="padding: 104px 0 0">
+      <div class="side">
+        <h2>Frequently asked</h2>
+        <p>Can't find it? Scroll down and write to us.</p>
+      </div>
+      <div class="faq">
+        <details open data-searchable>
+          <summary>Why doesn't the map add up to my disk size?<svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></summary>
+          <div class="answer"><p>Without Full Disk Access, macOS hides other users' folders, some caches and purgeable space. Scan as administrator and the purple "hidden space" petal fills in the difference.</p></div>
+        </details>
+        <details data-searchable>
+          <summary>What is "System Data" and how do I reduce it?<svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></summary>
+          <div class="answer"><p>It's the catch-all category in Storage settings: caches, Time Machine local snapshots, app support data, logs, and virtual machine or Docker disks. Scan your disk with DiskGarden to see it folder by folder; our guide <a class="link" href="/guides/system-data-mac/">What is System Data on a Mac</a> explains what's safe to remove.</p></div>
+        </details>
+        <details data-searchable>
+          <summary>How do I free up space on my Mac?<svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></summary>
+          <div class="answer"><p>Find the biggest folders first — scan with DiskGarden and follow the widest petals — then check the usual suspects: Downloads, old iPhone backups, Xcode and Docker data, caches and videos. The full walkthrough: <a class="link" href="/guides/free-up-space-on-mac/">How to free up space on your Mac</a>.</p></div>
+        </details>
+        <details data-searchable>
+          <summary>Is it safe to empty the Waste bin?<svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></summary>
+          <div class="answer"><p>Yes, as long as you've looked over what's in it. DiskGarden only removes what you put there, shows each item's size and path first, and refuses to take system folders such as /System, /Library and /usr. On the map, press Space to Quick Look anything before you drop it in; in the Waste bin, right-click an item to show it in Finder or take it back out.</p><p>By default, emptying moves the items to the Trash, so you can still get them back from there.</p></div>
+        </details>
+        <details data-searchable>
+          <summary>Can I scan an external drive or a network share?<svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></summary>
+          <div class="answer"><p>Yes. Every volume your Mac has mounted — USB and Thunderbolt drives, SD cards, disk images, Time Machine disks and network shares — shows up on the Volumes page. Network shares scan more slowly, since every folder is read over the network.</p></div>
+        </details>
+        <details data-searchable>
+          <summary>What are "smaller objects"?<svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></summary>
+          <div class="answer"><p>Files and folders too small to draw as their own petal are gathered into one grey petal per folder, so the map stays readable. Grow into the folder to see them individually.</p></div>
+        </details>
+        <details data-searchable>
+          <summary>Does DiskGarden delete caches or "system data" for me?<svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></summary>
+          <div class="answer"><p>No. DiskGarden never deletes anything on its own. It shows you where the space went; you decide what goes into the Waste bin, and nothing is removed until you empty it.</p></div>
+        </details>
+        <details data-searchable>
+          <summary>Where do files in the Waste bin go?<svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></summary>
+          <div class="answer"><p>Nowhere, until you empty the Waste bin: the files stay exactly where they are. When you empty it they move to the Trash, or — if you turned off "Emptying moves files to the Trash" in Settings — they're deleted right away.</p></div>
+        </details>
+        <details data-searchable>
+          <summary>Is it really free?<svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></summary>
+          <div class="answer"><p>Yes. Every feature, no time limit, no account and no ads.</p></div>
+        </details>
+        <details data-searchable>
+          <summary>Does DiskGarden send my data anywhere?<svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></summary>
+          <div class="answer"><p>Your scans stay on your Mac. DiskGarden goes online only to check for updates and, if it crashes, to send a crash report. The <a class="link" href="/privacy/">privacy page</a> has the details.</p></div>
+        </details>
+        <details data-searchable>
+          <summary>How do I uninstall it?<svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></summary>
+          <div class="answer"><p>Quit DiskGarden and drag it from Applications to the Trash. To also remove its saved scans and settings, delete <code>~/Library/Application Support/DiskGarden</code> and <code>~/Library/Preferences/app.diskgarden.DiskGarden.plist</code>. If you granted Full Disk Access, remove DiskGarden from System Settings → Privacy &amp; Security → Full Disk Access.</p></div>
+        </details>
+        <p class="no-results">Nothing matches that. Try another word, or write to us below.</p>
+      </div>
+    </section>
+
+    <section class="contact" id="contact" style="padding: 104px 0 24px">
+      <div class="card">
+        <h3>Still stuck? Write to a person.</h3>
+        <p>Tell us your macOS version, the DiskGarden version (About DiskGarden in the DiskGarden menu) and what you expected to happen. Screenshots help.</p>
+        <a class="btn btn-primary" data-dg-href="email" href="mailto:support@diskgarden.app"><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><rect x="3.5" y="5.5" width="17" height="13" rx="2.5"/><path d="m4.5 7 7.5 6 7.5-6"/></g></svg><span data-dg="email">support@diskgarden.app</span></a>
+        <br><small>We read every message.</small>
+      </div>
+      <div class="card">
+        <h3 style="font-size: 20px">Before you write</h3>
+        <ul class="ticks checks">
+          <li><svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Update to the latest version (DiskGarden → Check for Updates…).</span></li>
+          <li><svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>If the map looks incomplete, try scanning as administrator.</span></li>
+          <li><svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Items in the Waste bin are still on disk until you empty — nothing is lost yet.</span></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+<!-- dg:footer -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="foot">
+        <div>
+          <a class="brand" href="/"><svg class="sprout" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M11.37 23.52Q10.32 17.76 11.37 12.00L13.05 12.00Q12.00 17.76 13.05 23.52ZM12.00 12.96Q1.92 12.48 2.34 2.40Q11.16 1.92 12.00 12.96ZM12.42 11.04Q13.26 0.48 21.66 0.48Q22.08 10.56 12.42 11.04Z"/></svg>DiskGarden</a>
+          <p>A free disk space analyzer for the Mac.</p>
+        </div>
+        <div class="foot-cols">
+          <div><p class="foot-h">Product</p><ul><li><a href="/#features">Features</a></li><li><a href="/download/">Download</a></li><li><a href="/releases/">Release notes</a></li></ul></div>
+          <div><p class="foot-h">Learn</p><ul><li><a href="/guides/">Mac storage guides</a></li><li><a href="/guides/free-up-space-on-mac/">Free up space on a Mac</a></li><li><a href="/guides/system-data-mac/">What is System Data?</a></li><li><a href="/user-guide/">User guide</a></li></ul></div>
+          <div><p class="foot-h">Support</p><ul><li><a href="/support/#faq">FAQ</a></li><li><a href="/support/#contact">Contact</a></li><li><a href="/privacy/">Privacy</a></li></ul></div>
+          <div><p class="foot-h">Company</p><ul><li><a href="/about/">About</a></li><li><a href="/terms/">Terms</a></li></ul></div>
+        </div>
+      </div>
+      <div class="legal"><span>© 2026 DiskGarden. DiskGarden is free software.</span><span>Apple, Mac and macOS are trademarks of Apple Inc.</span></div>
+    </div>
+  </footer>
+<!-- /dg:footer -->
+</body>
+</html>
