@@ -50,8 +50,8 @@ PAGES = {
     "user-guide/index.html": dict(
         path="/user-guide/", nav="support", kind="article", crumbs=[("User guide", "/user-guide/")],
         title="DiskGarden User Guide — Scan, Read the Map, Free Up Space",
-        description="How to use DiskGarden: scan a disk, read the map, clear space safely with the Waste bin, scan as "
-                    "administrator, external drives and keyboard shortcuts."),
+        description="How to use DiskGarden: scan a disk, read the map, clear space safely with the Waste bin, Deep Scan "
+                    "(Admin), external drives and keyboard shortcuts."),
     "guides/index.html": dict(
         path="/guides/", nav="support", kind="guides", crumbs=[("Guides", "/guides/")],
         title="Mac Storage Guides — Free Up Disk Space on macOS",
