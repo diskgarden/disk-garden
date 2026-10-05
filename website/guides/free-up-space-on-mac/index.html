@@ -51,7 +51,7 @@
   <script>document.documentElement.classList.add("js")</script>
   <script>(function(){try{if(localStorage.getItem('dg-lang'))return}catch(e){}if(/bot|crawl|spider|slurp|lighthouse|headless/i.test(navigator.userAgent))return;var S=["es", "fr", "it", "de", "sv", "pl", "tr", "ru", "uk", "ar", "ja", "ko", "vi"],L=navigator.languages||[navigator.language||''];for(var i=0;i<L.length;i++){var l=(L[i]||'').toLowerCase(),f=null;if(l.indexOf('en')===0)return;if(/^zh-(tw|hk|mo|hant)/.test(l))f='zh-hant';else if(l.indexOf('zh')===0)f='zh-hans';else if(l==='pt-pt')f='pt-pt';else if(l.indexOf('pt')===0)f='pt-br';else if(S.indexOf(l.slice(0,2))>=0)f=l.slice(0,2);if(f){location.replace('/'+f+location.pathname+location.search+location.hash);return}}})()</script>
   <script src="/assets/site.js" defer></script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://diskgarden.app/#org","name":"DiskGarden","url":"https://diskgarden.app/","logo":"https://diskgarden.app/assets/app-icon-512.png","contactPoint":{"@type":"ContactPoint","contactType":"customer support","email":"support@diskgarden.app"}},{"@type":"WebSite","@id":"https://diskgarden.app/#website","name":"DiskGarden","url":"https://diskgarden.app/","publisher":{"@id":"https://diskgarden.app/#org"},"inLanguage":"en"},{"@type":"TechArticle","headline":"How to free up space on your Mac","description":"Mac disk almost full? Find what's taking up space, where big files hide (backups, Xcode, Docker, caches, Downloads) and how to clear them safely.","url":"https://diskgarden.app/guides/free-up-space-on-mac/","dateModified":"2026-10-04","inLanguage":"en","author":{"@id":"https://diskgarden.app/#org"},"publisher":{"@id":"https://diskgarden.app/#org"},"image":"https://diskgarden.app/assets/og-image.png","about":{"@id":"https://diskgarden.app/#app"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DiskGarden","item":"https://diskgarden.app/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://diskgarden.app/guides/"},{"@type":"ListItem","position":3,"name":"Free up space on your Mac","item":"https://diskgarden.app/guides/free-up-space-on-mac/"}]}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://diskgarden.app/#org","name":"DiskGarden","url":"https://diskgarden.app/","logo":"https://diskgarden.app/assets/app-icon-512.png","contactPoint":{"@type":"ContactPoint","contactType":"customer support","email":"support@diskgarden.app"}},{"@type":"WebSite","@id":"https://diskgarden.app/#website","name":"DiskGarden","url":"https://diskgarden.app/","publisher":{"@id":"https://diskgarden.app/#org"},"inLanguage":"en"},{"@type":"TechArticle","headline":"How to free up space on your Mac","description":"Mac disk almost full? Find what's taking up space, where big files hide (backups, Xcode, Docker, caches, Downloads) and how to clear them safely.","url":"https://diskgarden.app/guides/free-up-space-on-mac/","dateModified":"2026-10-05","inLanguage":"en","author":{"@id":"https://diskgarden.app/#org"},"publisher":{"@id":"https://diskgarden.app/#org"},"image":"https://diskgarden.app/assets/og-image.png","about":{"@id":"https://diskgarden.app/#app"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DiskGarden","item":"https://diskgarden.app/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://diskgarden.app/guides/"},{"@type":"ListItem","position":3,"name":"Free up space on your Mac","item":"https://diskgarden.app/guides/free-up-space-on-mac/"}]}]}</script>
 <!-- /dg:head -->
 </head>
 <body data-page="article">
@@ -114,7 +114,7 @@
           <li>Hover a petal to see its name and size, click to grow into it, and keep going until you find the files that matter.</li>
           <li>Drag what you don't need into the <b>Waste bin</b>. Nothing is deleted until you review the pile and empty it — and by default it goes to the Trash first.</li>
         </ol>
-        <p class="note">If the total doesn't add up to what macOS reports, part of the disk is off limits to normal apps. <a href="/user-guide/#administrator">Scan as administrator</a> to map it too.</p>
+        <p class="note">If the total doesn't add up to what macOS reports, part of the disk is off limits to normal apps. A <a href="/user-guide/#administrator">Deep Scan (Admin)</a> maps it too.</p>
       </section>
 
       <section id="usual-suspects">
@@ -157,7 +157,7 @@
         <ul>
           <li>Files in the <b>Trash</b> still take space until you empty it.</li>
           <li><b>Time Machine local snapshots</b> can keep deleted files on disk for a while. macOS removes them when it needs the space; see <a href="/guides/system-data-mac/#snapshots">System Data</a>.</li>
-          <li>Some space is <b>purgeable</b>: macOS counts it as used, but frees it automatically when an app needs it. DiskGarden shows this as <b>Free + purgeable</b>.</li>
+          <li>Some space is <b>purgeable</b>: macOS counts it as used, but frees it automatically when an app needs it. DiskGarden shows this as <b>Available (incl. purgeable)</b>.</li>
         </ul>
         <p>A restart often settles the numbers.</p>
       </section>

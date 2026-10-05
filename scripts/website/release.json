@@ -19,7 +19,7 @@
       "dmg": "/releases/DiskGarden-0.1.0.dmg",
       "notes": [
         "First release: the disk map, the Waste bin and a light mode.",
-        "Scan as administrator to map hidden space.",
+        "Deep Scan (Admin) maps hidden space.",
         "In 18 languages."
       ]
     }

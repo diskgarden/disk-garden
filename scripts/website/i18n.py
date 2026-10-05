@@ -43,8 +43,8 @@ TRANSLATED = [l for l in LANGS if l[0] != "en"]
 # Text the scripts draw at runtime (bloom.js, site.js); passed to the page as window.DG_I18N.
 JS_STRINGS = [
     "used", "of {total} used", "{size} · {pct} of used", "{size} · {pct} of {name}", "GB", "MB", "TB",
-    "Back out", "min", "s", "Volumes", "Macintosh HD", "{pct} full", "smaller objects…", "hidden space…",
-    "Free space", "Free + purgeable", "Waste bin", "Drop files here. Nothing is removed until you empty it.",
+    "Back out", "min", "s", "Volumes", "Macintosh HD", "{pct} full", "small items…", "hidden space…",
+    "Available", "Available (incl. purgeable)", "Waste bin", "Drop files here. Nothing is removed until you empty it.",
     "A disk-space map: rings of folders, each petal as wide as the space it takes.",
 ]
 

@@ -213,7 +213,7 @@ def software_app():
         "image": ORIGIN + "/assets/app-icon-512.png", "screenshot": ORIGIN + "/assets/og-image.png",
         "publisher": {"@id": ORIGIN + "/#org"},
         "featureList": ["Interactive disk space map (sunburst chart)", "Finds the largest files and folders",
-                        "Reveals hidden and purgeable space", "Scan as administrator",
+                        "Reveals hidden and purgeable space", "Deep Scan (Admin)",
                         "Safe review-before-delete Waste bin", "Scans external drives, disk images and network shares",
                         "Light and dark mode", "18 languages"],
     }

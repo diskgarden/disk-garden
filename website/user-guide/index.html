@@ -51,7 +51,7 @@
   <script>document.documentElement.classList.add("js")</script>
   <script>(function(){try{if(localStorage.getItem('dg-lang'))return}catch(e){}if(/bot|crawl|spider|slurp|lighthouse|headless/i.test(navigator.userAgent))return;var S=["es", "fr", "it", "de", "sv", "pl", "tr", "ru", "uk", "ar", "ja", "ko", "vi"],L=navigator.languages||[navigator.language||''];for(var i=0;i<L.length;i++){var l=(L[i]||'').toLowerCase(),f=null;if(l.indexOf('en')===0)return;if(/^zh-(tw|hk|mo|hant)/.test(l))f='zh-hant';else if(l.indexOf('zh')===0)f='zh-hans';else if(l==='pt-pt')f='pt-pt';else if(l.indexOf('pt')===0)f='pt-br';else if(S.indexOf(l.slice(0,2))>=0)f=l.slice(0,2);if(f){location.replace('/'+f+location.pathname+location.search+location.hash);return}}})()</script>
   <script src="/assets/site.js" defer></script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://diskgarden.app/#org","name":"DiskGarden","url":"https://diskgarden.app/","logo":"https://diskgarden.app/assets/app-icon-512.png","contactPoint":{"@type":"ContactPoint","contactType":"customer support","email":"support@diskgarden.app"}},{"@type":"WebSite","@id":"https://diskgarden.app/#website","name":"DiskGarden","url":"https://diskgarden.app/","publisher":{"@id":"https://diskgarden.app/#org"},"inLanguage":"en"},{"@type":"TechArticle","headline":"User guide","description":"How to use DiskGarden: scan a disk, read the map, clear space safely with the Waste bin, scan as administrator, external drives and keyboard shortcuts.","url":"https://diskgarden.app/user-guide/","dateModified":"2026-10-04","inLanguage":"en","author":{"@id":"https://diskgarden.app/#org"},"publisher":{"@id":"https://diskgarden.app/#org"},"image":"https://diskgarden.app/assets/og-image.png","about":{"@id":"https://diskgarden.app/#app"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DiskGarden","item":"https://diskgarden.app/"},{"@type":"ListItem","position":2,"name":"User guide","item":"https://diskgarden.app/user-guide/"}]}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://diskgarden.app/#org","name":"DiskGarden","url":"https://diskgarden.app/","logo":"https://diskgarden.app/assets/app-icon-512.png","contactPoint":{"@type":"ContactPoint","contactType":"customer support","email":"support@diskgarden.app"}},{"@type":"WebSite","@id":"https://diskgarden.app/#website","name":"DiskGarden","url":"https://diskgarden.app/","publisher":{"@id":"https://diskgarden.app/#org"},"inLanguage":"en"},{"@type":"TechArticle","headline":"User guide","description":"How to use DiskGarden: scan a disk, read the map, clear space safely with the Waste bin, scan as administrator, external drives and keyboard shortcuts.","url":"https://diskgarden.app/user-guide/","dateModified":"2026-10-05","inLanguage":"en","author":{"@id":"https://diskgarden.app/#org"},"publisher":{"@id":"https://diskgarden.app/#org"},"image":"https://diskgarden.app/assets/og-image.png","about":{"@id":"https://diskgarden.app/#app"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DiskGarden","item":"https://diskgarden.app/"},{"@type":"ListItem","position":2,"name":"User guide","item":"https://diskgarden.app/user-guide/"}]}]}</script>
 <!-- /dg:head -->
 </head>
 <body data-page="guide">
@@ -100,7 +100,7 @@
           <li>When it's done, the map opens. Next time the button says <b>View</b>: DiskGarden remembers the result between launches and keeps it up to date as files change.</li>
           <li>To map a single folder instead, click <b>Scan a folder…</b>, press <kbd>⌘</kbd> <kbd>O</kbd>, or drop the folder onto the window.</li>
         </ol>
-        <p>The <b>▾</b> next to a disk's button has more: rescan, scan as administrator, forget the saved result.</p>
+        <p>The <b>▾</b> next to a disk's button has more: rescan, Deep Scan (Admin), clear the scan results.</p>
       </section>
 
       <section id="reading-the-map">
@@ -108,14 +108,14 @@
         <p>The map is a bloom of rings around a center disc. The disc shows how much space is used. The first ring holds the top-level folders, the next ring their contents, and so on outward. Each petal is as wide as the space it takes, so the biggest things are the widest petals.</p>
         <ul>
           <li><b>Colours</b> group things that belong together: a folder's contents share its part of the colour wheel, getting lighter toward the edge. When you grow into a folder, its contents spread over the whole wheel again.</li>
-          <li><b>Grey "smaller objects…"</b> petals gather the files and folders too small to draw one by one.</li>
+          <li><b>Grey "small items…"</b> petals gather the files and folders too small to draw one by one.</li>
           <li><b>Purple "hidden space…"</b> is space the disk reports as used that the scan couldn't reach: other users' files, protected system folders, snapshots and purgeable space. <a href="#administrator">Scanning as administrator</a> maps most of it.</li>
         </ul>
         <h3>Moving around</h3>
         <ul>
           <li><b>Hover</b> a petal to see its name, size and share of the disk; the list on the left highlights it too.</li>
           <li><b>Click</b> a folder petal to grow into it. Click the center disc, use the path at the top, or press <kbd>⌘</kbd> <kbd>↑</kbd> to come back out.</li>
-          <li>The list on the left shows the current folder's contents with their sizes. Below it, <b>Free space</b> and <b>Free + purgeable</b> show how much room the disk has.</li>
+          <li>The list on the left shows the current folder's contents with their sizes. Below it, <b>Available</b> and <b>Available (incl. purgeable)</b> show how much room the disk has.</li>
         </ul>
       </section>
 
@@ -132,10 +132,10 @@
       </section>
 
       <section id="administrator">
-        <h2>Scanning as administrator</h2>
+        <h2>Deep Scan (Admin)</h2>
         <p>Some of your disk is off limits to normal apps: other users' home folders, parts of the system and some caches. That's where the purple <b>hidden space</b> comes from.</p>
         <ul>
-          <li>Choose <b>Scan as Administrator</b> from the <b>▾</b> menu next to a disk, or click the hidden space petal, and enter your Mac's password. DiskGarden scans again with administrator rights and maps what it couldn't see before.</li>
+          <li>Choose <b>Deep Scan (Admin)</b> from the <b>▾</b> menu next to a disk and enter your Mac's password. DiskGarden scans again with administrator rights and maps what it couldn't see before.</li>
           <li>For the most complete map, also give DiskGarden <b>Full Disk Access</b>: open <b>System Settings → Privacy &amp; Security → Full Disk Access</b>, and switch DiskGarden on. DiskGarden's own Settings has a <b>Full Disk Access</b> tab that tells you whether it's allowed.</li>
         </ul>
         <h3>Revoking access</h3>

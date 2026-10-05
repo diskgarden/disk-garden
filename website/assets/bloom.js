@@ -80,7 +80,7 @@
     node.children = weights.map((w) => ({
       name: NAMES[Math.floor(rand() * NAMES.length)], size: node.size * coverage * (w / sum), kind: "dir",
     }));
-    if (rand() < 0.35) node.children.push({ name: "smaller objects…", size: node.size * (1 - coverage) * 0.5, kind: "smaller" });
+    if (rand() < 0.35) node.children.push({ name: "small items…", size: node.size * (1 - coverage) * 0.5, kind: "smaller" });
     for (const c of node.children) grow(c, depth + 1, rand, maxDepth);
   }
 
@@ -89,9 +89,9 @@
     const dir = (name, gb, children) => ({ name, size: gb * GB, kind: "dir", children });
     const root = dir("Macintosh HD", 508.7, [
       dir("Users", 377.1, [dir("Movies", 141.6), dir("Library", 92.3), dir("Developer", 58.4), dir("Downloads", 36.1),
-        dir("Pictures", 21.7), dir("Music", 9.8), { name: "smaller objects…", size: 7.4 * GB, kind: "smaller" }]),
+        dir("Pictures", 21.7), dir("Music", 9.8), { name: "small items…", size: 7.4 * GB, kind: "smaller" }]),
       dir("System", 49.4), dir("Applications", 42.6), dir("Library", 7.3), dir("private", 7.2), dir("opt", 5),
-      { name: "smaller objects…", size: 1.8 * GB, kind: "smaller" },
+      { name: "small items…", size: 1.8 * GB, kind: "smaller" },
       { name: "hidden space…", size: 18.2 * GB, kind: "hidden" },
     ]);
     const walk = (n, depth) => {
@@ -531,7 +531,7 @@
       `<i style="width:${((18.2 / capacity) * 100).toFixed(2)}%;background:${NEUTRAL.hidden.dark}"></i>`;
     const rows = LEGEND.map(([n, p, s, on]) =>
       `<li data-name="${n}"${on ? ' class="on"' : ""}><i style="background:${color(n)}"></i><span>${n}</span><em>${fmtPct(p)}</em><b>${fmtSize(s * GB)}</b></li>`).join("") +
-      `<li class="muted"><i style="background:${NEUTRAL.smallerDot[light ? "light" : "dark"]}"></i><span>${T("smaller objects…")}</span><em>${fmtPct(0.004)}</em><b>${fmtSize(1.8 * GB)}</b></li>` +
+      `<li class="muted"><i style="background:${NEUTRAL.smallerDot[light ? "light" : "dark"]}"></i><span>${T("small items…")}</span><em>${fmtPct(0.004)}</em><b>${fmtSize(1.8 * GB)}</b></li>` +
       `<li class="hidden-space"><i style="background:${NEUTRAL.hidden.dark}"></i><span>${T("hidden space…")}</span><em>${fmtPct(0.036)}</em><b>${fmtSize(18.2 * GB)}</b></li>`;
     el.classList.add("appwin", `appwin--${theme}`);
     el.setAttribute("aria-hidden", "true");
@@ -549,7 +549,7 @@
           <div class="aw-stack">${bar}</div>
           <ul>${rows}</ul>
           <hr>
-          <ul class="aw-free"><li><i class="ring"></i><span>${T("Free space")}</span><b>${fmtSize(485.9 * GB)}</b></li><li><i class="ring dashed"></i><span>${T("Free + purgeable")}</span><b>${fmtSize(547.3 * GB)}</b></li></ul>
+          <ul class="aw-free"><li><i class="ring"></i><span>${T("Available")}</span><b>${fmtSize(485.9 * GB)}</b></li><li><i class="ring dashed"></i><span>${T("Available (incl. purgeable)")}</span><b>${fmtSize(547.3 * GB)}</b></li></ul>
         </div>
         <div class="aw-compost"><span class="aw-leaf">${leaf}</span><span><b>${T("Waste bin")}</b><small>${T("Drop files here. Nothing is removed until you empty it.")}</small></span></div>
         <div class="aw-chart" data-bloom data-theme="${theme}" data-disc="summary" data-label="Users" data-crop="false"
