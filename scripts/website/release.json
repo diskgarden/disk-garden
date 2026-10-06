@@ -1,18 +1,26 @@
 {
-  "version": "1.0.0",
+  "version": "1.0.1",
   "released": "2026-10-06",
   "minMacOS": "15",
   "minMacOSName": "Sequoia",
   "architectures": "Apple silicon and Intel",
   "sizeMB": 6.2,
   "installedMB": 13,
-  "dmg": "https://dl.diskgarden.app/DiskGarden-1.0.0.dmg",
-  "sha256": "61b5127ba088f040a8dc13e64129b897b68d83fbe9cf8d9b18d07e944e81c7a7",
+  "dmg": "https://dl.diskgarden.app/DiskGarden-1.0.1.dmg",
+  "sha256": "24f8a2bef660230b6cb4a0834a465fcfb4760cc5bad8bf6d8afb764985f338de",
   "signedBy": "Anirudh Gupta (7STSZZ5YCT)",
   "notarized": true,
   "supportEmail": "support@diskgarden.app",
   "languages": "English and 17 more",
   "history": [
+    {
+      "version": "1.0.1",
+      "date": "2026-10-06",
+      "dmg": "https://dl.diskgarden.app/DiskGarden-1.0.1.dmg",
+      "notes": [
+        "Maintenance release: checks that automatic updates arrive. Nothing else changes."
+      ]
+    },
     {
       "version": "1.0.0",
       "date": "2026-10-06",

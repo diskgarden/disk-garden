@@ -1,8 +1,23 @@
-<?xml version="1.0" standalone="yes"?><!-- sparkle-sign-warning:
+<?xml version="1.0" standalone="yes"?>
+<!-- sparkle-sign-warning:
 IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
---><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+-->
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
     <channel>
         <title>DiskGarden</title>
+        <item>
+            <title>1.0.1</title>
+            <pubDate>Tue, 06 Oct 2026 20:50:45 +0000</pubDate>
+            <link>https://diskgarden.app</link>
+            <sparkle:version>10001</sparkle:version>
+            <sparkle:shortVersionString>1.0.1</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <description sparkle:format="markdown"><![CDATA[## DiskGarden 1.0.1
+
+- Maintenance release: checks that automatic updates arrive. Nothing else changes.
+]]></description>
+            <enclosure url="https://dl.diskgarden.app/DiskGarden-1.0.1.dmg" length="6201412" type="application/octet-stream" sparkle:edSignature="A1MOiCNk9ADkrm22uKl5FxRo5UdPZ2L85moBDJQUYWRBhUAJZKL7dluAQwfL5XP08poEkLkWnaQtWMF2mfIfAQ=="/>
+        </item>
         <item>
             <title>1.0.0</title>
             <pubDate>Tue, 06 Oct 2026 20:37:27 +0000</pubDate>
@@ -16,10 +31,11 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
 - Deep Scan (Admin) maps hidden space.
 - In 18 languages.
 ]]></description>
-            <enclosure url="https://dl.diskgarden.app/DiskGarden-1.0.0.dmg" length="6201386" type="application/octet-stream" sparkle:edSignature="j/aLkV6DtFN0+1BNL6BX3KN/cHl4l0ZQnRg2DQpKTuo26TcXpPpMWfCei3dnrSWlK0uX5/Kw1oZ6D/DOu0yfDA=="></enclosure>
+            <enclosure url="https://dl.diskgarden.app/DiskGarden-1.0.0.dmg" length="6201386" type="application/octet-stream" sparkle:edSignature="j/aLkV6DtFN0+1BNL6BX3KN/cHl4l0ZQnRg2DQpKTuo26TcXpPpMWfCei3dnrSWlK0uX5/Kw1oZ6D/DOu0yfDA=="/>
         </item>
     </channel>
-</rss><!-- sparkle-signatures:
-edSignature: wG34Mgkn/dm2Bn8eHp5RcfNB4V7py4IFIXcQtZ3vrWKMLvJhrSYo3Km5qyKvfGEgpwqm/TCWDHMCs44lYvpMCQ==
-length: 1281
+</rss>
+<!-- sparkle-signatures:
+edSignature: 6KR68Irf5uPmMSbs2VfdvOKWBhRcyD6ecfp3NDEtgs2QKD/gam4XwoU2xOyt4ckqET9oBK/AjsgSFKTzDoT+Dg==
+length: 2074
 -->
