@@ -179,9 +179,32 @@ def esc(s):
     return html.escape(s, quote=True)
 
 
-def fmt_date(iso):
+MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October",
+          "November", "December"]
+# Release facts are filled in per language from these templates (translation skips the filled-in elements, so
+# a new version, date or size never turns into an untranslated sentence). Extracted for translation in main().
+RELEASE_STRINGS = MONTHS + [
+    "{month} {day}, {year}", "Version {version}", "macOS {macos} or later", "macOS {macos} {name} or later",
+    "Released {date}", "{size} MB", "About {size} MB", "{a} on {b}", "Download {version}", "Not released yet",
+    "Yes", "No", "Apple silicon and Intel", "Apple silicon", "English and 17 more",
+]
+
+
+def same(s):
+    return s
+
+
+# Languages that write 6,1 instead of 6.1.
+DECIMAL_COMMA = {"de", "es", "fr", "it", "pl", "pt-BR", "pt-PT", "ru", "sv", "tr", "uk", "vi"}
+
+
+def fmt_num(x, lang="en"):
+    return str(x).replace(".", ",") if lang in DECIMAL_COMMA else str(x)
+
+
+def fmt_date(iso, tr=same):
     d = datetime.date.fromisoformat(iso)
-    return d.strftime("%B %-d, %Y")
+    return tr("{month} {day}, {year}").format(month=tr(MONTHS[d.month - 1]), day=d.day, year=d.year)
 
 
 def absolute(path):
@@ -426,32 +449,34 @@ def footer():
 
 # ------------------------------------------------------------------------------------------------ release facts
 
-def release_values():
+def release_values(tr=same, lang="en"):
     r = REL
     return {
         "version": r.get("version"),
-        "macosFull": r.get("minMacOS") and f"macOS {r['minMacOS']}{' ' + r['minMacOSName'] if r.get('minMacOSName') else ''} or later",
-        "arch": r.get("architectures"),
-        "size": r.get("sizeMB") and f"{r['sizeMB']} MB",
-        "installed": r.get("installedMB") and f"About {r['installedMB']} MB",
-        "languages": r.get("languages"),
+        "macosFull": r.get("minMacOS") and (
+            tr("macOS {macos} {name} or later").format(macos=r["minMacOS"], name=r["minMacOSName"]) if r.get("minMacOSName")
+            else tr("macOS {macos} or later").format(macos=r["minMacOS"])),
+        "arch": r.get("architectures") and tr(r["architectures"]),
+        "size": r.get("sizeMB") and tr("{size} MB").format(size=fmt_num(r["sizeMB"], lang)),
+        "installed": r.get("installedMB") and tr("About {size} MB").format(size=fmt_num(r["installedMB"], lang)),
+        "languages": r.get("languages") and tr(r["languages"]),
         "sha256": r.get("sha256"),
         "signedBy": r.get("signedBy"),
-        "notarized": {True: "Yes", False: "No"}.get(r.get("notarized")),
+        "notarized": {True: tr("Yes"), False: tr("No")}.get(r.get("notarized")),
         "email": r.get("supportEmail"),
         "dmgName": r.get("version") and f"DiskGarden-{r['version']}.dmg",
     }
 
 
-def meta_parts():
+def meta_parts(tr=same, lang="en"):
     r = REL
     return {
-        "version": r.get("version") and f"Version {r['version']}",
-        "macos": r.get("minMacOS") and f"macOS {r['minMacOS']} or later",
-        "arch": r.get("architectures"),
-        "size": r.get("sizeMB") and f"{r['sizeMB']} MB",
+        "version": r.get("version") and tr("Version {version}").format(version=r["version"]),
+        "macos": r.get("minMacOS") and tr("macOS {macos} or later").format(macos=r["minMacOS"]),
+        "arch": r.get("architectures") and tr(r["architectures"]),
+        "size": r.get("sizeMB") and tr("{size} MB").format(size=fmt_num(r["sizeMB"], lang)),
         "dmg": ".dmg",
-        "released": r.get("released") and f"Released {fmt_date(r['released'])}",
+        "released": r.get("released") and tr("Released {date}").format(date=fmt_date(r["released"], tr)),
     }
 
 
@@ -463,8 +488,10 @@ def set_attr(tag, name, value):
     return tag[:-1] + (f" {name}" if value is True else f' {name}="{esc(value)}"') + ">"
 
 
-def bake_release(text):
-    values, parts = release_values(), meta_parts()
+def bake_release(text, tr=same, lang="en"):
+    """Fills in the release facts (data-dg…, notes, history). Runs on the English page and again on each translated
+    page with that language's `tr`; translation itself skips these elements (i18n.protect)."""
+    values, parts = release_values(tr, lang), meta_parts(tr, lang)
 
     def inner(attr_re, fn):
         nonlocal text
@@ -482,7 +509,12 @@ def bake_release(text):
         keys = re.search(r'data-dg-meta="([^"]+)"', tag).group(1).split(",")
         sep = (re.search(r'data-dg-sep="([^"]*)"', tag) or [None, " · "])[1]
         items = [parts[k.strip()] for k in keys if parts.get(k.strip())]
-        body = "".join(f"<span>{esc(t)}</span>" for t in items) if sep == "facts" else esc(sep.join(items))
+        if sep == "facts":
+            body = "".join(f"<span>{esc(t)}</span>" for t in items)
+        elif sep == " on " and len(items) == 2:
+            body = esc(tr("{a} on {b}").format(a=items[0], b=items[1]))
+        else:
+            body = esc(sep.join(items))
         return set_attr(tag, "hidden", None if items else True) + body + m.group(4)
     inner(r'data-dg-meta="[^"]+"', meta)
 
@@ -500,12 +532,12 @@ def bake_release(text):
     text = re.sub(r'<a\b[^>]*\bdata-dg-href="[^"]+"[^>]*>', href, text)
 
     current = (REL.get("history") or [{}])[0]
-    text = region(text, "notes", "".join(f"<li>{esc(n)}</li>" for n in current.get("notes", [])), indent=False)
+    text = region(text, "notes", "".join(f"<li>{esc(tr(n))}</li>" for n in current.get("notes", [])), indent=False)
     history = "".join(f'''
       <article class="release" id="v{esc(r['version'])}">
-        <div><h2>{esc(r['version'])}</h2><small>{fmt_date(r['date']) if r.get('date') else "Not released yet"}</small></div>
-        <div><ul class="ticks">{"".join(f"<li>{esc(n)}</li>" for n in r['notes'])}</ul>{
-            f'<p style="margin-top:18px"><a class="link" href="{esc(r["dmg"])}">Download {esc(r["version"])}</a></p>'
+        <div><h2>{esc(r['version'])}</h2><small data-dg-local>{esc(fmt_date(r['date'], tr) if r.get('date') else tr("Not released yet"))}</small></div>
+        <div><ul class="ticks">{"".join(f"<li>{esc(tr(n))}</li>" for n in r['notes'])}</ul>{
+            f'<p style="margin-top:18px"><a class="link" data-dg-local href="{esc(r["dmg"])}">{esc(tr("Download {version}").format(version=r["version"]))}</a></p>'
             if r.get("date") and r.get("dmg") else ""}</div>
       </article>''' for r in REL.get("history", []))
     text = region(text, "history", history + "\n    ", indent=False)
@@ -638,7 +670,7 @@ def main():
             for k in i18n.extract(built[rel][0]):
                 add(k)
         for k in [APP_DESCRIPTION, "DiskGarden: a disk space map of a Mac, drawn as a colorful bloom"] + \
-                software_app()["featureList"] + i18n.JS_STRINGS:
+                software_app()["featureList"] + i18n.JS_STRINGS + RELEASE_STRINGS:
             add(k)
         out = i18n.I18N / "source.json"
         out.parent.mkdir(exist_ok=True)
@@ -660,7 +692,7 @@ def main():
             text = region(text, "header", header(page["nav"], page["path"], code))
             top, body = i18n.body_of(text)
             body = i18n.rewrite_links(i18n.translate_body(body, cat, missing), folder, None)
-            text = top + body
+            text = bake_release(top + body, tr, code)
             text = text.replace('<html lang="en">', f'<html lang="{hl}" dir="{direction}">', 1)
             text = region(text, "head", head(page, text, modified, code, tr))
             out = SITE / folder / rel

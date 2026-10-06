@@ -65,8 +65,9 @@ def has_text(s):
 # ---------------------------------------------------------------------------------------------------- protection
 
 def protect(text):
-    """Replaces <svg>…</svg>, <code>…</code>, <script>…</script>, <style>…</style> and translate="no" elements with
-    ⟦n⟧ markers. Returns (text, stash)."""
+    """Replaces <svg>…</svg>, <code>…</code>, <script>…</script>, <style>…</style>, translate="no" elements and the
+    release facts (data-dg / data-dg-meta / data-dg-local, filled in per language) with ⟦n⟧ markers. Returns (text,
+    stash)."""
     stash = []
 
     def keep(m):
@@ -76,6 +77,8 @@ def protect(text):
     text = re.sub(r"<svg\b.*?</svg>", keep, text, flags=re.S)
     text = re.sub(r"<code\b[^>]*>.*?</code>", keep, text, flags=re.S)
     text = re.sub(r'<(\w+)\b[^>]*\btranslate="no"[^>]*>.*?</\1>', keep, text, flags=re.S)
+    # Release facts (version, size, dates…) are filled in per language by build-website.py's bake_release.
+    text = re.sub(r'<(\w+)\b[^>]*(?:\bdata-dg(?:-meta)?="[^"]*"|\bdata-dg-local\b)[^>]*>.*?</\1>', keep, text, flags=re.S)
     return text, stash
 
 

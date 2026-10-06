@@ -3,7 +3,7 @@
   "released": null,
   "minMacOS": "15",
   "minMacOSName": "Sequoia",
-  "architectures": "Apple silicon",
+  "architectures": "Apple silicon and Intel",
   "sizeMB": null,
   "installedMB": null,
   "dmg": "/releases/DiskGarden-0.1.0.dmg",
