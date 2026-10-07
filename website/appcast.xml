@@ -6,6 +6,19 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>DiskGarden</title>
         <item>
+            <title>1.0.3</title>
+            <pubDate>Wed, 07 Oct 2026 08:34:49 +0000</pubDate>
+            <link>https://diskgarden.app</link>
+            <sparkle:version>10003</sparkle:version>
+            <sparkle:shortVersionString>1.0.3</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <description sparkle:format="markdown"><![CDATA[## DiskGarden 1.0.3
+
+- Maintenance release: checks the new "Restart to Update" flow. Nothing else changes.
+]]></description>
+            <enclosure url="https://dl.diskgarden.app/DiskGarden-1.0.3.dmg" length="6212142" type="application/octet-stream" sparkle:edSignature="NFjZ6zo8fGsq0H1LlTofv01MLXBC+og7oLXD0w+knbri/gRDFjI/bpCFpQ6NK+lAfzfmcMp/4JzUIrS5cm/JAQ=="/>
+        </item>
+        <item>
             <title>1.0.2</title>
             <pubDate>Wed, 07 Oct 2026 08:23:47 +0000</pubDate>
             <link>https://diskgarden.app</link>
@@ -32,24 +45,9 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
 ]]></description>
             <enclosure url="https://dl.diskgarden.app/DiskGarden-1.0.1.dmg" length="6201412" type="application/octet-stream" sparkle:edSignature="A1MOiCNk9ADkrm22uKl5FxRo5UdPZ2L85moBDJQUYWRBhUAJZKL7dluAQwfL5XP08poEkLkWnaQtWMF2mfIfAQ=="/>
         </item>
-        <item>
-            <title>1.0.0</title>
-            <pubDate>Tue, 06 Oct 2026 20:37:27 +0000</pubDate>
-            <link>https://diskgarden.app</link>
-            <sparkle:version>10000</sparkle:version>
-            <sparkle:shortVersionString>1.0.0</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown"><![CDATA[## DiskGarden 1.0.0
-
-- First release: the disk map, the Waste bin and a light mode.
-- Deep Scan (Admin) maps hidden space.
-- In 18 languages.
-]]></description>
-            <enclosure url="https://dl.diskgarden.app/DiskGarden-1.0.0.dmg" length="6201386" type="application/octet-stream" sparkle:edSignature="j/aLkV6DtFN0+1BNL6BX3KN/cHl4l0ZQnRg2DQpKTuo26TcXpPpMWfCei3dnrSWlK0uX5/Kw1oZ6D/DOu0yfDA=="/>
-        </item>
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: OdTv922FKrs5D1FQT4W4xbAAfHpc/IdNAH2phL+KemPG7BOJGTItGCDj7/jH51qKMC8X0BL3btsjUZr0uG7BDg==
-length: 2982
+edSignature: EdTHGW4h2g/RrrjDq7b4jdL78monkKtDZ5MPlrj+N0TSuE9ic30tSwidQCqdkokOGZRGRWGt3lV9sJqBJZVmCA==
+length: 2947
 -->
