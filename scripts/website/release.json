@@ -1,18 +1,26 @@
 {
-  "version": "1.0.3",
+  "version": "1.0.4",
   "released": "2026-10-07",
   "minMacOS": "15",
   "minMacOSName": "Sequoia",
   "architectures": "Apple silicon and Intel",
   "sizeMB": 6.2,
   "installedMB": 13,
-  "dmg": "https://dl.diskgarden.app/DiskGarden-1.0.3.dmg",
-  "sha256": "4cb9674eef2868b2d264df8574923d8224e8d1b9754e06911421372533495b8e",
+  "dmg": "https://dl.diskgarden.app/DiskGarden-1.0.4.dmg",
+  "sha256": "c2efdc3f66901f23188ea929b23dfcf92bb8f686b800fa3318a9eed5bd742724",
   "signedBy": "Anirudh Gupta (7STSZZ5YCT)",
   "notarized": true,
   "supportEmail": "support@diskgarden.app",
   "languages": "English and 17 more",
   "history": [
+    {
+      "version": "1.0.4",
+      "date": "2026-10-07",
+      "dmg": "https://dl.diskgarden.app/DiskGarden-1.0.4.dmg",
+      "notes": [
+        "When an update is required, the update screen installs an update that has already downloaded, and shows progress while one is downloading."
+      ]
+    },
     {
       "version": "1.0.3",
       "date": "2026-10-07",

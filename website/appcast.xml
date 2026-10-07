@@ -6,6 +6,19 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>DiskGarden</title>
         <item>
+            <title>1.0.4</title>
+            <pubDate>Wed, 07 Oct 2026 09:13:08 +0000</pubDate>
+            <link>https://diskgarden.app</link>
+            <sparkle:version>10004</sparkle:version>
+            <sparkle:shortVersionString>1.0.4</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <description sparkle:format="markdown"><![CDATA[## DiskGarden 1.0.4
+
+- When an update is required, the update screen installs an update that has already downloaded, and shows progress while one is downloading.
+]]></description>
+            <enclosure url="https://dl.diskgarden.app/DiskGarden-1.0.4.dmg" length="6219234" type="application/octet-stream" sparkle:edSignature="QerHBQqab5wi3LUniw+mY1WlD2d7jSKU4dvwG+Ke2Ytgnj4aLFuouTD93Po8syUEBFCZqRGWax0SYAn+R27vBA=="/>
+        </item>
+        <item>
             <title>1.0.3</title>
             <pubDate>Wed, 07 Oct 2026 08:34:49 +0000</pubDate>
             <link>https://diskgarden.app</link>
@@ -32,22 +45,9 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
 ]]></description>
             <enclosure url="https://dl.diskgarden.app/DiskGarden-1.0.2.dmg" length="6212182" type="application/octet-stream" sparkle:edSignature="7vcL+fbyW5er8eTgImfrVrDOvicrqNafXUY38W3nebHoogQLt+ahMi7SiB4U3a2eFM1roZlO5Q7Ab7+3cPsPDA=="/>
         </item>
-        <item>
-            <title>1.0.1</title>
-            <pubDate>Tue, 06 Oct 2026 20:50:45 +0000</pubDate>
-            <link>https://diskgarden.app</link>
-            <sparkle:version>10001</sparkle:version>
-            <sparkle:shortVersionString>1.0.1</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown"><![CDATA[## DiskGarden 1.0.1
-
-- Maintenance release: checks that automatic updates arrive. Nothing else changes.
-]]></description>
-            <enclosure url="https://dl.diskgarden.app/DiskGarden-1.0.1.dmg" length="6201412" type="application/octet-stream" sparkle:edSignature="A1MOiCNk9ADkrm22uKl5FxRo5UdPZ2L85moBDJQUYWRBhUAJZKL7dluAQwfL5XP08poEkLkWnaQtWMF2mfIfAQ=="/>
-        </item>
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: EdTHGW4h2g/RrrjDq7b4jdL78monkKtDZ5MPlrj+N0TSuE9ic30tSwidQCqdkokOGZRGRWGt3lV9sJqBJZVmCA==
-length: 2947
+edSignature: PcqYRsU7eshids4GhTwexUXXXUOgvgfXZBj/JYL8UL2tFhrmS7SNbYTlAPpZqGDEi743ybECnW9O2dyFfSJkCg==
+length: 3005
 -->
