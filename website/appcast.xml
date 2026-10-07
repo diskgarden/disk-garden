@@ -6,6 +6,19 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>DiskGarden</title>
         <item>
+            <title>1.0.5</title>
+            <pubDate>Wed, 07 Oct 2026 09:17:41 +0000</pubDate>
+            <link>https://diskgarden.app</link>
+            <sparkle:version>10005</sparkle:version>
+            <sparkle:shortVersionString>1.0.5</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <description sparkle:format="markdown"><![CDATA[## DiskGarden 1.0.5
+
+- Maintenance release: checks updates from 1.0.4. Nothing else changes.
+]]></description>
+            <enclosure url="https://dl.diskgarden.app/DiskGarden-1.0.5.dmg" length="6219336" type="application/octet-stream" sparkle:edSignature="jpK4LLsGKFKIUb7/kWhTfmNbgr8AQfGL05o5167bGFo0bLnqXVpiV49TB6cqezdDGYW+GXVX3qi2w5tQ5n6EBw=="/>
+        </item>
+        <item>
             <title>1.0.4</title>
             <pubDate>Wed, 07 Oct 2026 09:13:08 +0000</pubDate>
             <link>https://diskgarden.app</link>
@@ -31,23 +44,9 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
 ]]></description>
             <enclosure url="https://dl.diskgarden.app/DiskGarden-1.0.3.dmg" length="6212142" type="application/octet-stream" sparkle:edSignature="NFjZ6zo8fGsq0H1LlTofv01MLXBC+og7oLXD0w+knbri/gRDFjI/bpCFpQ6NK+lAfzfmcMp/4JzUIrS5cm/JAQ=="/>
         </item>
-        <item>
-            <title>1.0.2</title>
-            <pubDate>Wed, 07 Oct 2026 08:23:47 +0000</pubDate>
-            <link>https://diskgarden.app</link>
-            <sparkle:version>10002</sparkle:version>
-            <sparkle:shortVersionString>1.0.2</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown"><![CDATA[## DiskGarden 1.0.2
-
-- Checks for updates every time it opens, so new versions arrive sooner.
-- When an update has downloaded, a "Restart to Update" button installs it right away (or it installs when you quit).
-]]></description>
-            <enclosure url="https://dl.diskgarden.app/DiskGarden-1.0.2.dmg" length="6212182" type="application/octet-stream" sparkle:edSignature="7vcL+fbyW5er8eTgImfrVrDOvicrqNafXUY38W3nebHoogQLt+ahMi7SiB4U3a2eFM1roZlO5Q7Ab7+3cPsPDA=="/>
-        </item>
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: PcqYRsU7eshids4GhTwexUXXXUOgvgfXZBj/JYL8UL2tFhrmS7SNbYTlAPpZqGDEi743ybECnW9O2dyFfSJkCg==
-length: 3005
+edSignature: C/DoWqz58Gg3DhNQ4i2GxkvIO+Ii19oX/NgizsWd2vuxfNsHFqQ9d4djbsEiPxR3pQ9sVgwPaBL+GidTvqNkAw==
+length: 2887
 -->
