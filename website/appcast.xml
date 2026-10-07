@@ -6,6 +6,20 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>DiskGarden</title>
         <item>
+            <title>1.0.2</title>
+            <pubDate>Wed, 07 Oct 2026 08:23:47 +0000</pubDate>
+            <link>https://diskgarden.app</link>
+            <sparkle:version>10002</sparkle:version>
+            <sparkle:shortVersionString>1.0.2</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <description sparkle:format="markdown"><![CDATA[## DiskGarden 1.0.2
+
+- Checks for updates every time it opens, so new versions arrive sooner.
+- When an update has downloaded, a "Restart to Update" button installs it right away (or it installs when you quit).
+]]></description>
+            <enclosure url="https://dl.diskgarden.app/DiskGarden-1.0.2.dmg" length="6212182" type="application/octet-stream" sparkle:edSignature="7vcL+fbyW5er8eTgImfrVrDOvicrqNafXUY38W3nebHoogQLt+ahMi7SiB4U3a2eFM1roZlO5Q7Ab7+3cPsPDA=="/>
+        </item>
+        <item>
             <title>1.0.1</title>
             <pubDate>Tue, 06 Oct 2026 20:50:45 +0000</pubDate>
             <link>https://diskgarden.app</link>
@@ -36,6 +50,6 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: 6KR68Irf5uPmMSbs2VfdvOKWBhRcyD6ecfp3NDEtgs2QKD/gam4XwoU2xOyt4ckqET9oBK/AjsgSFKTzDoT+Dg==
-length: 2074
+edSignature: OdTv922FKrs5D1FQT4W4xbAAfHpc/IdNAH2phL+KemPG7BOJGTItGCDj7/jH51qKMC8X0BL3btsjUZr0uG7BDg==
+length: 2982
 -->
