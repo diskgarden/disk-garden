@@ -31,22 +31,9 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
 ]]></description>
             <enclosure url="https://dl.diskgarden.app/DiskGarden-1.0.4.dmg" length="6219234" type="application/octet-stream" sparkle:edSignature="QerHBQqab5wi3LUniw+mY1WlD2d7jSKU4dvwG+Ke2Ytgnj4aLFuouTD93Po8syUEBFCZqRGWax0SYAn+R27vBA=="/>
         </item>
-        <item>
-            <title>1.0.3</title>
-            <pubDate>Wed, 07 Oct 2026 08:34:49 +0000</pubDate>
-            <link>https://diskgarden.app</link>
-            <sparkle:version>10003</sparkle:version>
-            <sparkle:shortVersionString>1.0.3</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown"><![CDATA[## DiskGarden 1.0.3
-
-- Maintenance release: checks the new "Restart to Update" flow. Nothing else changes.
-]]></description>
-            <enclosure url="https://dl.diskgarden.app/DiskGarden-1.0.3.dmg" length="6212142" type="application/octet-stream" sparkle:edSignature="NFjZ6zo8fGsq0H1LlTofv01MLXBC+og7oLXD0w+knbri/gRDFjI/bpCFpQ6NK+lAfzfmcMp/4JzUIrS5cm/JAQ=="/>
-        </item>
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: C/DoWqz58Gg3DhNQ4i2GxkvIO+Ii19oX/NgizsWd2vuxfNsHFqQ9d4djbsEiPxR3pQ9sVgwPaBL+GidTvqNkAw==
-length: 2887
+edSignature: WaaCAV3hI5T68AcpfaTTSphjh9PhyS+RTwbHauaTZJo++MXzbdkE2rQih94LyfXBZ2pqnWnuwZ7jaU8aFLodAQ==
+length: 2083
 -->
