@@ -6,6 +6,19 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>DiskGarden</title>
         <item>
+            <title>1.0.6</title>
+            <pubDate>Thu, 08 Oct 2026 09:08:18 +0000</pubDate>
+            <link>https://diskgarden.app</link>
+            <sparkle:version>10006</sparkle:version>
+            <sparkle:shortVersionString>1.0.6</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <description sparkle:format="markdown"><![CDATA[## DiskGarden 1.0.6
+
+- Remembers when you first started using DiskGarden on this Mac (stored only on your Mac), so early users can be thanked later.
+]]></description>
+            <enclosure url="https://dl.diskgarden.app/DiskGarden-1.0.6.dmg" length="6236826" type="application/octet-stream" sparkle:edSignature="sl5tVnShtmASZ3CJTgSh2qij7Q/YEw/RzE5isHHZaTBsDIMoL6yhLF3wkgolnXoENS/jF0axCiI3z2ymEPkECQ=="/>
+        </item>
+        <item>
             <title>1.0.5</title>
             <pubDate>Wed, 07 Oct 2026 09:17:41 +0000</pubDate>
             <link>https://diskgarden.app</link>
@@ -34,6 +47,6 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: WaaCAV3hI5T68AcpfaTTSphjh9PhyS+RTwbHauaTZJo++MXzbdkE2rQih94LyfXBZ2pqnWnuwZ7jaU8aFLodAQ==
-length: 2083
+edSignature: 0aimq++A1bECURR1MmFBaU0H9AYaow06h/1lXAy2iL+hqz7gwC8rW3Xe5hlhuqarMvhTtn/X5QYZQvh9ZfKdBg==
+length: 2929
 -->
