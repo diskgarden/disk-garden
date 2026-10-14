@@ -37,8 +37,6 @@
   <img src=".github/readme/screenshot.png" width="800" alt="DiskGarden showing a whole Mac startup disk as a colorful bloom, with the biggest folders listed beside it">
 </p>
 
----
-
 ## Features
 
 ### The map
