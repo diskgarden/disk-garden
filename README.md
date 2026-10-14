@@ -37,9 +37,6 @@
   <img src=".github/readme/screenshot.png" width="800" alt="DiskGarden showing a whole Mac startup disk as a colorful bloom, with the biggest folders listed beside it">
 </p>
 
-> [!NOTE]
-> Full source code coming soon.
-
 ---
 
 ## Features
@@ -99,7 +96,7 @@ use **DiskGarden → Check for Updates…**.
 ## Build from source
 
 `app/` holds a basic version of DiskGarden in SwiftUI: pick a folder, see what's inside it by size, double-click a
-folder to dig in. It needs Xcode 16 or later (Swift 6).
+folder to dig in. It needs Xcode 16 or later (Swift 6). Full source code coming soon.
 
 ```sh
 cd app
