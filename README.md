@@ -34,7 +34,7 @@
 </p>
 
 <p align="center">
-  <a href="https://diskgarden.app"><img src="website/assets/og-image.png" alt="DiskGarden showing a disk as a sunburst bloom: 508.7 GB of 994.6 GB used"></a>
+  <img src=".github/readme/screenshot.png" width="800" alt="DiskGarden showing a whole Mac startup disk as a colorful bloom, with the biggest folders listed beside it">
 </p>
 
 > [!NOTE]
