@@ -2,7 +2,7 @@
   <a href="https://diskgarden.app"><img src="website/assets/app-icon-512.png" width="128" height="128" alt="DiskGarden app icon"></a>
 </p>
 
-<h1 align="center">DiskGarden</h1>
+<h3 align="center">DiskGarden</h3>
 
 <p align="center"><b>See what's eating your Mac.</b></p>
 
