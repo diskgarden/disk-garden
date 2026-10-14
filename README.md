@@ -38,8 +38,7 @@
 </p>
 
 > [!NOTE]
-> **Full source code coming soon.** For now this repository holds the website, [diskgarden.app](https://diskgarden.app).
-> The app is distributed as a signed, notarized download.
+> Full source code coming soon.
 
 ---
 
@@ -97,6 +96,16 @@ current version.
 DiskGarden checks for updates by itself and installs them when you restart it (**Restart to Update**). You can also
 use **DiskGarden → Check for Updates…**.
 
+## Build from source
+
+`app/` holds a basic version of DiskGarden in SwiftUI: pick a folder, see what's inside it by size, double-click a
+folder to dig in. It needs Xcode 16 or later (Swift 6).
+
+```sh
+cd app
+swift run
+```
+
 ## Requirements
 
 - macOS 15 Sequoia or later
@@ -114,10 +123,11 @@ Questions, bugs or ideas: [support page](https://diskgarden.app/support/) or
 
 ---
 
-## This repository: the website
+## The website
 
-Plain HTML, CSS and JavaScript in `website/`, plus one build script that bakes shared parts (head, header, footer,
-release facts, sitemap) into the pages and generates the 17 translated versions. Published to GitHub Pages by
+The website, [diskgarden.app](https://diskgarden.app), lives in this repository too: plain HTML, CSS and JavaScript
+in `website/`, plus one build script that bakes shared parts (head, header, footer, release facts, sitemap) into the
+pages and generates the 17 translated versions. Published to GitHub Pages by
 `.github/workflows/pages.yml` on every push to `main`.
 
 ```sh
