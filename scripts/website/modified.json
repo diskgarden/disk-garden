@@ -1,0 +1,94 @@
+{
+ "404.html": {
+  "date": "2026-10-04",
+  "hash": "3ffb3eae6e7232bc"
+ },
+ "about/index.html": {
+  "date": "2026-10-04",
+  "hash": "b20a5b5fa3b26b15"
+ },
+ "download/index.html": {
+  "date": "2026-10-08",
+  "hash": "cd07ebb93ff1f46e"
+ },
+ "guides/apple-intelligence-storage/index.html": {
+  "date": "2026-10-04",
+  "hash": "2854bc50de8339cc"
+ },
+ "guides/clear-cache-mac/index.html": {
+  "date": "2026-10-04",
+  "hash": "6b139a162529843d"
+ },
+ "guides/docker-storage-mac/index.html": {
+  "date": "2026-10-04",
+  "hash": "25a14983f87d5906"
+ },
+ "guides/find-large-files-mac/index.html": {
+  "date": "2026-10-04",
+  "hash": "79c330e2264e0a97"
+ },
+ "guides/free-up-space-on-mac/index.html": {
+  "date": "2026-10-05",
+  "hash": "83e79e62cbb0e5ce"
+ },
+ "guides/index.html": {
+  "date": "2026-10-05",
+  "hash": "1f5f8214f03038d5"
+ },
+ "guides/iphone-backups-mac/index.html": {
+  "date": "2026-10-04",
+  "hash": "3c649921b9f78dc1"
+ },
+ "guides/mac-cleaner-apps/index.html": {
+  "date": "2026-10-04",
+  "hash": "b54528b4e225ff32"
+ },
+ "guides/macos-system-storage/index.html": {
+  "date": "2026-10-05",
+  "hash": "32dc044425546f57"
+ },
+ "guides/purgeable-space-mac/index.html": {
+  "date": "2026-10-05",
+  "hash": "f4737f16c784e65b"
+ },
+ "guides/spotlight-index-mac/index.html": {
+  "date": "2026-10-05",
+  "hash": "b04d90faaee3b040"
+ },
+ "guides/system-data-mac/index.html": {
+  "date": "2026-10-05",
+  "hash": "08382ba9aaa9439b"
+ },
+ "guides/time-machine-local-snapshots/index.html": {
+  "date": "2026-10-05",
+  "hash": "fcada51082869115"
+ },
+ "guides/xcode-storage/index.html": {
+  "date": "2026-10-04",
+  "hash": "1e43e2ee42cfb1bb"
+ },
+ "index.html": {
+  "date": "2026-10-08",
+  "hash": "512ac7f96fb5ae36"
+ },
+ "privacy/index.html": {
+  "date": "2026-10-04",
+  "hash": "78c1a0d2d1bb4061"
+ },
+ "releases/index.html": {
+  "date": "2026-10-08",
+  "hash": "e7cca9bc74c34b10"
+ },
+ "support/index.html": {
+  "date": "2026-10-05",
+  "hash": "268251bb8c77dc4e"
+ },
+ "terms/index.html": {
+  "date": "2026-10-04",
+  "hash": "0f6d33ae55da2f1d"
+ },
+ "user-guide/index.html": {
+  "date": "2026-10-05",
+  "hash": "434f88a20f30dd98"
+ }
+}

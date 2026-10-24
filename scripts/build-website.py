@@ -11,10 +11,10 @@ static files with no JavaScript needed for content. Run it after editing pages o
 runs it too.  Usage: python3 scripts/build-website.py [--check]
 """
 import datetime
+import hashlib
 import html
 import json
 import re
-import subprocess
 import sys
 from pathlib import Path
 
@@ -583,17 +583,24 @@ def cta_html():
       </section>'''
 
 
-def last_modified(path):
-    try:
-        out = subprocess.run(["git", "log", "-1", "--format=%cs", "--", str(path)], cwd=ROOT,
-                             capture_output=True, text=True).stdout.strip()
-        dirty = subprocess.run(["git", "status", "--porcelain", "--", str(path)], cwd=ROOT,
-                               capture_output=True, text=True).stdout.strip()
-        if out and not dirty:
-            return out
-    except OSError:
-        pass
-    return datetime.date.today().isoformat()
+# When a page's own content last changed — the dates in JSON-LD `dateModified` and the sitemap's `lastmod`.
+# scripts/website/modified.json records, per page, the date and a fingerprint of the content that date belongs to;
+# a build re-dates a page only when its fingerprint no longer matches, so the dates stay put until a page really
+# changes. Deriving them from git instead cannot work here: the build bakes the date into the very file whose commit
+# date it reads (so the baked date can never catch up), and the deploy workflow's shallow clone reports the pushed
+# commit's date for every path.
+MODIFIED = ROOT / "scripts/website/modified.json"
+
+# Regions that hold identical site chrome rather than this page's content. An edit to the shared head, header or
+# footer is not an edit to the page, so it must not re-date all of them.
+CHROME = ("head", "header", "footer")
+
+
+def content_hash(text):
+    """Fingerprints a page's own content: the file with the shared chrome emptied out."""
+    for name in CHROME:
+        text = region(text, name, "", indent=False)
+    return hashlib.sha256(text.encode()).hexdigest()[:16]
 
 
 def minify_css(css):
@@ -613,6 +620,11 @@ def main():
         CATALOGS[code] = i18n.load_catalog(code)
     built = {}
     changed, sitemap = [], []
+    try:
+        dates = json.loads(MODIFIED.read_text())
+    except (OSError, ValueError):
+        dates = {}
+    today, dates_out = datetime.date.today().isoformat(), {}
     css_out = SITE / "assets/site.min.css"
     css = minify_css((SITE / "assets/site.css").read_text())
     if not css_out.exists() or css_out.read_text() != css:
@@ -623,7 +635,6 @@ def main():
         path = SITE / rel
         original = path.read_text()
         text = bake_release(original)
-        modified = last_modified(path)
         if page.get("crumbs"):
             text = region(text, "crumbs", crumbs_html(page))
         if page.get("slug"):
@@ -632,6 +643,10 @@ def main():
         text = region(text, "guides", "\n".join("          " + guide_card(a, "h2") for a in ARTICLES))
         text = region(text, "featured", "\n".join("          " + guide_card(ARTICLE_BY_SLUG[s]) for s in
                                                    ["free-up-space-on-mac", "system-data-mac", "macos-system-storage"]))
+        # The content is final here; everything after this point is chrome, which content_hash ignores.
+        was, digest = dates.get(rel, {}), content_hash(text)
+        modified = was["date"] if was.get("hash") == digest and was.get("date") else today
+        dates_out[rel] = {"date": modified, "hash": digest}
         text = region(text, "head", head(page, text, modified))
         text = region(text, "header", header(page["nav"], page["path"]))
         text = region(text, "footer", footer())
@@ -655,6 +670,11 @@ def main():
         changed.append("llms.txt")
         if not check:
             lp.write_text(llms)
+    ds = json.dumps({k: dates_out[k] for k in sorted(dates_out)}, indent=1) + "\n"
+    if not MODIFIED.exists() or MODIFIED.read_text() != ds:
+        changed.append(str(MODIFIED.relative_to(ROOT)))
+        if not check:
+            MODIFIED.write_text(ds)
     # ---- languages: catalog keys, then generated pages (website/<folder>/…, not in git)
     if extract_mode:
         keys = []
