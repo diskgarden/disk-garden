@@ -32,6 +32,12 @@ jobs:
           python-version: "3.12"
       - name: Bake shared parts (head, header, footer, release facts, sitemap)
         run: python3 scripts/build-website.py
+      # After the build, not before: the 17 translated page sets only exist once build-website.py has
+      # written them, and they carry most of the download links. Before "Assemble the site", so a label that
+      # has drifted out of the Worker's vocabulary fails the run instead of deploying downloads credited to
+      # nobody. See "Download attribution" in docs/WEBSITE.md.
+      - name: Check the ?src= download-attribution tags
+        run: python3 scripts/check-src-tags.py
       - name: Assemble the site
         run: |
           mkdir -p _site

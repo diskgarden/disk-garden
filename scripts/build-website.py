@@ -185,6 +185,41 @@ def esc(s):
     return html.escape(s, quote=True)
 
 
+# ---------------------------------------------------------------------------------------- download attribution
+#
+# Every download link the site builds carries ?src=<page>, so the Worker in front of dl.diskgarden.app can report
+# which page produced a download. It has to be a query string rather than the referrer: a cross-origin navigation
+# sends only the origin under the default strict-origin-when-cross-origin policy, so the Worker would see
+# "diskgarden.app" and never the path. The tag is read server-side and nothing is stored in the visitor's browser,
+# so the cookieless promise on /privacy/ still holds and no consent banner is needed.
+#
+# Deliberately NOT tagged:
+#   - website/appcast.xml enclosures. Sparkle fetches the same object key as the download button, and the Worker
+#     counts those separately as "update"; tagging them would attribute every installed copy's auto-update to a page.
+#   - the JSON-LD downloadUrl, which is metadata for search engines rather than a link a person clicked.
+#
+# Labels are shared with the Worker's PAGE_SOURCES: one it does not recognise collapses to "other", which loses the
+# page silently rather than failing. scripts/check-src-tags.py asserts the two agree against the built HTML.
+
+def src_for(page):
+    """The ?src= label for download links built into `page`."""
+    if page.get("slug"):
+        return f"guide-{page['slug']}"
+    path = page["path"]
+    if path == "/":
+        return "home"
+    if path == "/404.html":
+        return "404"
+    return path.strip("/")
+
+
+def tag_src(url, src):
+    """Tags a download URL with the page linking to it. Unchanged when there is no page to name."""
+    if not url or not src:
+        return url
+    return f"{url}{'&' if '?' in url else '?'}src={src}"
+
+
 MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October",
           "November", "December"]
 # Release facts are filled in per language from these templates (translation skips the filled-in elements, so
@@ -409,9 +444,9 @@ def lang_switcher(path, lang):
             f'<div class="lang-menu" role="menu">{items}</div></div>')
 
 
-def header(nav, path="/", lang="en"):
+def header(nav, path="/", lang="en", src=None):
     cur = lambda n: ' aria-current="page"' if n == nav else ""
-    dmg = REL.get("dmg") or "/download/"
+    dmg = tag_src(REL.get("dmg"), src) or "/download/"
     return f'''  <header class="site-header">
     <div class="bar">
       <a class="brand" href="/" aria-label="DiskGarden home">{SPROUT}DiskGarden</a>
@@ -501,9 +536,11 @@ def set_attr(tag, name, value):
     return tag[:-1] + (f" {name}" if value is True else f' {name}="{esc(value)}"') + ">"
 
 
-def bake_release(text, tr=same, lang="en"):
+def bake_release(text, tr=same, lang="en", src=None):
     """Fills in the release facts (data-dg…, notes, history). Runs on the English page and again on each translated
-    page with that language's `tr`; translation itself skips these elements (i18n.protect)."""
+    page with that language's `tr`; translation itself skips these elements (i18n.protect).
+
+    `src` is the page's download-attribution label; see tag_src above."""
     values, parts = release_values(tr, lang), meta_parts(tr, lang)
 
     def inner(attr_re, fn):
@@ -540,7 +577,8 @@ def bake_release(text, tr=same, lang="en"):
     def href(m):
         tag = m.group(0)
         key = re.search(r'data-dg-href="([^"]+)"', tag).group(1)
-        url = {"dmg": REL.get("dmg"), "email": REL.get("supportEmail") and "mailto:" + REL["supportEmail"]}.get(key)
+        url = {"dmg": tag_src(REL.get("dmg"), src),
+               "email": REL.get("supportEmail") and "mailto:" + REL["supportEmail"]}.get(key)
         return set_attr(tag, "href", url) if url else tag
     text = re.sub(r'<a\b[^>]*\bdata-dg-href="[^"]+"[^>]*>', href, text)
 
@@ -550,7 +588,7 @@ def bake_release(text, tr=same, lang="en"):
       <article class="release" id="v{esc(r['version'])}">
         <div><h2>{esc(r['version'])}</h2><small data-dg-local>{esc(fmt_date(r['date'], tr) if r.get('date') else tr("Not released yet"))}</small></div>
         <div><ul class="ticks">{"".join(f"<li>{esc(tr(n))}</li>" for n in r['notes'])}</ul>{
-            f'<p style="margin-top:18px"><a class="link" data-dg-local href="{esc(r["dmg"])}">{esc(tr("Download {version}").format(version=r["version"]))}</a></p>'
+            f'<p style="margin-top:18px"><a class="link" data-dg-local href="{esc(tag_src(r["dmg"], src))}">{esc(tr("Download {version}").format(version=r["version"]))}</a></p>'
             if r.get("date") and r.get("dmg") else ""}</div>
       </article>''' for r in REL.get("history", []))
     text = region(text, "history", history + "\n    ", indent=False)
@@ -613,6 +651,10 @@ def content_hash(text):
     """Fingerprints a page's own content: the file with the shared chrome emptied out."""
     for name in CHROME:
         text = region(text, name, "", indent=False)
+    # A ?src= tag on a download link is measurement, not content, so it must not re-date the page — the same reason
+    # CHROME is emptied above. Without this, adding or renaming an attribution label would stamp today's date on the
+    # homepage, /download/ and /releases/ (and their lastmod in sitemap.xml), claiming an edit that never happened.
+    text = re.sub(r'(href="https://dl\.diskgarden\.app/[^"?]*)\?src=[a-z0-9-]+', r"\1", text)
     return hashlib.sha256(text.encode()).hexdigest()[:16]
 
 
@@ -647,7 +689,7 @@ def main():
     for rel, page in PAGES.items():
         path = SITE / rel
         original = path.read_text()
-        text = bake_release(original)
+        text = bake_release(original, src=src_for(page))
         if page.get("crumbs"):
             text = region(text, "crumbs", crumbs_html(page))
         if page.get("slug"):
@@ -661,7 +703,7 @@ def main():
         modified = was["date"] if was.get("hash") == digest and was.get("date") else today
         dates_out[rel] = {"date": modified, "hash": digest}
         text = region(text, "head", head(page, text, modified))
-        text = region(text, "header", header(page["nav"], page["path"]))
+        text = region(text, "header", header(page["nav"], page["path"], src=src_for(page)))
         text = region(text, "footer", footer())
         if text != original:
             changed.append(rel)
@@ -722,10 +764,10 @@ def main():
             if page.get("noindex"):
                 continue
             text, modified = built[rel]
-            text = region(text, "header", header(page["nav"], page["path"], code))
+            text = region(text, "header", header(page["nav"], page["path"], code, src=src_for(page)))
             top, body = i18n.body_of(text)
             body = i18n.rewrite_links(i18n.translate_body(body, cat, missing), folder, None)
-            text = bake_release(top + body, tr, code)
+            text = bake_release(top + body, tr, code, src=src_for(page))
             text = text.replace('<html lang="en">', f'<html lang="{hl}" dir="{direction}">', 1)
             text = region(text, "head", head(page, text, modified, code, tr))
             out = SITE / folder / rel
