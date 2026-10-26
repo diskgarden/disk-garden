@@ -1,0 +1,32 @@
+name = "diskgarden-downloads"
+main = "src/index.js"
+compatibility_date = "2026-10-01"
+
+# Stage 1: deploy with NO route and test on <name>.<subdomain>.workers.dev.
+# The R2 binding below reaches the real bucket, so every behaviour except route
+# interception can be verified without dl.diskgarden.app being involved at all.
+workers_dev = true
+
+[observability]
+enabled = true
+
+# The bucket the DMGs are uploaded to by scripts/upload-release.sh.
+[[r2_buckets]]
+binding = "BUCKET"
+bucket_name = "diskgarden-downloads"
+
+# One data point per request. Free plan: 100,000 writes + 10,000 read queries
+# per day, and Cloudflare currently does not bill for Analytics Engine at all.
+[[analytics_engine_datasets]]
+binding = "DOWNLOADS"
+dataset = "diskgarden_downloads"
+
+# Stage 2: only after stage 1 passes, uncomment this and redeploy. A Workers
+# route takes precedence over the bucket's R2 custom domain on the same
+# hostname, which is what makes this work — and also what makes it the critical
+# download path. Keep the pattern exact: a wildcard like *.diskgarden.app/*
+# would swallow traffic meant for other subdomains.
+#
+# [[routes]]
+# pattern = "dl.diskgarden.app/*"
+# zone_name = "diskgarden.app"

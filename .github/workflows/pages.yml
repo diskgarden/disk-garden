@@ -5,7 +5,12 @@ name: Website
 on:
   push:
     branches: [main]
-    paths: ["website/**", "scripts/**", ".github/workflows/pages.yml"]
+    # worker/src/attribution.js is listed because check-src-tags.py reads the
+    # ?src= vocabulary out of it: editing the Worker's labels can break the
+    # built site's attribution without touching website/ or scripts/. The rest
+    # of worker/ is deliberately not listed — Worker code changes do not affect
+    # the pages and should not redeploy them.
+    paths: ["website/**", "scripts/**", "worker/src/attribution.js", ".github/workflows/pages.yml"]
   workflow_dispatch:
 
 permissions:

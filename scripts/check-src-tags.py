@@ -11,6 +11,12 @@ plausible. Nothing in the build or the Worker complains. So the agreement
 between the two vocabularies is asserted here, against the HTML that actually
 shipped rather than against either list in isolation.
 
+The Worker's vocabulary is read out of `worker/src/attribution.js` rather than
+copied into this file. An earlier version kept its own literal copy "so the two
+sides can drift apart visibly", which sounds right and is not: both sides were
+then the same side, so the check passed no matter what the Worker recognised.
+The two sides that matter are the built HTML and the Worker that reads the tags.
+
 It also pins the two places that must NOT carry a tag:
   - appcast.xml, which Sparkle reads. Tagging it would attribute every installed
     copy's auto-update to a page and inflate downloads by the whole install base.
@@ -25,26 +31,96 @@ import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SITE = ROOT / "website"
-
-# Mirrors PAGE_SOURCES / CAMPAIGN_SOURCES in the Worker's src/attribution.js, and
-# SRC_SHAPE's bound. Kept as literals on purpose: the point is to detect the two
-# sides drifting, which importing one into the other would hide.
-PAGE_SOURCES = {
-    "home", "download", "releases", "support", "user-guide",
-    "guides", "about", "privacy", "terms", "404",
-}
-GUIDE_SOURCES = {
-    "guide-apple-intelligence-storage", "guide-clear-cache-mac", "guide-docker-storage-mac",
-    "guide-find-large-files-mac", "guide-free-up-space-on-mac", "guide-iphone-backups-mac",
-    "guide-mac-cleaner-apps", "guide-macos-system-storage", "guide-purgeable-space-mac",
-    "guide-spotlight-index-mac", "guide-system-data-mac", "guide-time-machine-local-snapshots",
-    "guide-xcode-storage",
-}
-CAMPAIGN_SOURCES = {"ph", "reddit", "hn", "x", "medium", "threads", "instagram", "appcast"}
-SRC_SHAPE = re.compile(r"^[a-z0-9][a-z0-9-]{0,63}$")
+ATTRIBUTION = ROOT / "worker" / "src" / "attribution.js"
 
 DMG_HREF = re.compile(r'href="(https://dl\.diskgarden\.app/[^"]*)"')
 SRC_PARAM = re.compile(r"[?&]src=([^&\"]*)")
+
+# A floor, not an expected count: it may legitimately grow. It exists so a parse
+# that silently finds the wrong thing — the file moved, the declarations were
+# reshaped — fails here instead of producing a short vocabulary that rejects
+# real labels, or an empty one whose error message would point at the HTML.
+MIN_LABELS = {"PAGE_SOURCES": 8, "GUIDE_SOURCES": 10, "CAMPAIGN_SOURCES": 5}
+
+
+def fail(msg):
+    print(f"✗ {msg}")
+    sys.exit(1)
+
+
+def js_set(text, name):
+    """The double-quoted members of `export const <name> = new Set([...])`."""
+    m = re.search(
+        r"export\s+const\s+" + name + r"\s*=\s*new\s+Set\(\[(.*?)\]\)",
+        text,
+        re.S,
+    )
+    if not m:
+        fail(f"{ATTRIBUTION.name} has no `export const {name} = new Set([...])` — "
+             f"the Worker's vocabulary could not be read, so this check cannot "
+             f"compare the built HTML against it")
+    # Each member carries a trailing // comment naming its page, and those
+    # comments contain quoted strings ("/", "/download/"). Strip comments before
+    # reading members, or the paths get picked up as labels. Labels are
+    # [a-z0-9-] only, so no label can contain "//".
+    body = re.sub(r"//[^\n]*", "", m.group(1))
+    members = set(re.findall(r'"([^"]+)"', body))
+    floor = MIN_LABELS[name]
+    if len(members) < floor:
+        fail(f"{ATTRIBUTION.name}: {name} parsed as only {len(members)} label(s) "
+             f"({', '.join(sorted(members)) or 'none'}), fewer than the {floor} "
+             f"this check expects at minimum — the declaration was probably "
+             f"reshaped and is no longer being read correctly")
+    return members
+
+
+def js_src_shape(text):
+    """The Worker's SRC_SHAPE, compiled. Its bound is part of the vocabulary:
+    a label longer than the cap buckets as "other" even when it is in the set,
+    which is how guide-time-machine-local-snapshots (34 chars) was lost to a
+    32-char cap."""
+    m = re.search(r"const\s+SRC_SHAPE\s*=\s*/(.+?)/\s*;", text)
+    if not m:
+        fail(f"{ATTRIBUTION.name} has no `const SRC_SHAPE = /.../;` — the bound "
+             f"the Worker applies before the set lookup could not be read")
+    pattern = m.group(1)
+    # Only a literal character-class pattern is accepted. JS and Python regex
+    # syntax agree on this subset; anything richer would need a real translation
+    # and must not be guessed at.
+    if not re.fullmatch(r"\^\[[a-z0-9\-\\\]]+\][^/]*\$", pattern):
+        fail(f"{ATTRIBUTION.name}: SRC_SHAPE is {pattern!r}, which is richer than "
+             f"the character-class form this check knows how to evaluate in "
+             f"Python — port it here deliberately rather than trusting a guess")
+    try:
+        return re.compile(pattern)
+    except re.error as exc:
+        fail(f"{ATTRIBUTION.name}: SRC_SHAPE {pattern!r} does not compile in Python ({exc})")
+
+
+if not ATTRIBUTION.is_file():
+    fail(f"no Worker vocabulary at {ATTRIBUTION.relative_to(ROOT)} — the ?src= "
+         f"labels in the built HTML are only meaningful if the Worker that reads "
+         f"them recognises them, and there is nothing here to compare against")
+
+_JS = ATTRIBUTION.read_text()
+PAGE_SOURCES = js_set(_JS, "PAGE_SOURCES")
+GUIDE_SOURCES = js_set(_JS, "GUIDE_SOURCES")
+CAMPAIGN_SOURCES = js_set(_JS, "CAMPAIGN_SOURCES")
+SRC_SHAPE = js_src_shape(_JS)
+
+# The Worker applies SRC_SHAPE *before* the set lookup, so a label that is in the
+# set but fails the shape still buckets as "other". That is not hypothetical:
+# guide-time-machine-local-snapshots is 34 characters and the cap was once 32, so
+# one guide's downloads were credited to nobody while the other twelve worked.
+_unreachable = sorted(
+    label
+    for label in PAGE_SOURCES | GUIDE_SOURCES | CAMPAIGN_SOURCES
+    if not SRC_SHAPE.match(label)
+)
+if _unreachable:
+    fail(f"{ATTRIBUTION.name} contradicts itself: {', '.join(_unreachable)} "
+         f"is in the vocabulary but fails SRC_SHAPE ({SRC_SHAPE.pattern}), so the "
+         f"Worker would record it as \"other\" despite listing it")
 
 
 def accepted(label):
@@ -52,11 +128,6 @@ def accepted(label):
     if not SRC_SHAPE.match(label):
         return False
     return label in PAGE_SOURCES or label in GUIDE_SOURCES or label in CAMPAIGN_SOURCES
-
-
-def fail(msg):
-    print(f"✗ {msg}")
-    sys.exit(1)
 
 
 def main():
@@ -120,7 +191,9 @@ def main():
 
     print(f"  ✓ {tagged} tagged download links across {len(html_files)} pages, "
           f"{len(seen)} distinct labels, all accepted by the Worker")
-    print("✓ src tags OK")
+    print(f"✓ src tags OK (vocabulary read from {ATTRIBUTION.relative_to(ROOT)}: "
+          f"{len(PAGE_SOURCES)} page + {len(GUIDE_SOURCES)} guide + "
+          f"{len(CAMPAIGN_SOURCES)} campaign labels)")
 
 
 if __name__ == "__main__":
