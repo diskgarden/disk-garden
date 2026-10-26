@@ -97,6 +97,39 @@ def js_src_shape(text):
         fail(f"{ATTRIBUTION.name}: SRC_SHAPE {pattern!r} does not compile in Python ({exc})")
 
 
+def js_known_sources(text, names):
+    """Assert `KNOWN_SOURCES` really is the union of the three sets.
+
+    sanitizeSrc queries KNOWN_SOURCES; this file rebuilds the union from the
+    three sets instead. So the two sides only agree for as long as KNOWN_SOURCES
+    is actually that union, and nothing else here would notice if it stopped
+    being one. Dropping `...GUIDE_SOURCES` from the spread buckets all thirteen
+    guides as "other" while every other check in this file still passes — the
+    same silent miscrediting this script exists to catch, one level down.
+    """
+    m = re.search(
+        r"export\s+const\s+KNOWN_SOURCES\s*=\s*new\s+Set\(\[(.*?)\]\)", text, re.S
+    )
+    if not m:
+        fail(f"{ATTRIBUTION.name} has no `export const KNOWN_SOURCES = new Set([...])` "
+             f"— that is the set sanitizeSrc actually queries, so without it this "
+             f"check cannot tell which labels the Worker would keep")
+    body = re.sub(r"//[^\n]*", "", m.group(1))
+    spread = set(re.findall(r"\.\.\.\s*([A-Za-z_][A-Za-z0-9_]*)", body))
+    if spread != set(names):
+        missing = ", ".join(sorted(set(names) - spread)) or "none"
+        extra = ", ".join(sorted(spread - set(names))) or "none"
+        fail(f"{ATTRIBUTION.name}: KNOWN_SOURCES spreads {', '.join(sorted(spread)) or 'nothing'}, "
+             f"not the three sets this check compares against (missing: {missing}; "
+             f"unexpected: {extra}) — labels from a missing set would record as "
+             f'"other" even though they are still listed above')
+    leftover = re.sub(r"\.\.\.\s*[A-Za-z_][A-Za-z0-9_]*\s*,?", "", body).strip()
+    if leftover:
+        fail(f"{ATTRIBUTION.name}: KNOWN_SOURCES contains {leftover!r} beyond the "
+             f"three spreads — a label added straight into the union is accepted "
+             f"by the Worker but invisible to this check")
+
+
 if not ATTRIBUTION.is_file():
     fail(f"no Worker vocabulary at {ATTRIBUTION.relative_to(ROOT)} — the ?src= "
          f"labels in the built HTML are only meaningful if the Worker that reads "
@@ -107,6 +140,7 @@ PAGE_SOURCES = js_set(_JS, "PAGE_SOURCES")
 GUIDE_SOURCES = js_set(_JS, "GUIDE_SOURCES")
 CAMPAIGN_SOURCES = js_set(_JS, "CAMPAIGN_SOURCES")
 SRC_SHAPE = js_src_shape(_JS)
+js_known_sources(_JS, ("PAGE_SOURCES", "GUIDE_SOURCES", "CAMPAIGN_SOURCES"))
 
 # The Worker applies SRC_SHAPE *before* the set lookup, so a label that is in the
 # set but fails the shape still buckets as "other". That is not hypothetical:
