@@ -22,6 +22,6 @@
 - [Time Machine local snapshots](https://diskgarden.app/guides/time-machine-local-snapshots/): What local snapshots are, how to list them, and when to delete them.
 - [Purgeable space](https://diskgarden.app/guides/purgeable-space-mac/): Why the disk can look full even when macOS calls space purgeable.
 - [Spotlight's index](https://diskgarden.app/guides/spotlight-index-mac/): How big the Spotlight index is, why it balloons, and how to rebuild it.
-- [Apple Intelligence storage](https://diskgarden.app/guides/apple-intelligence-storage/): How much space the on-device models need, and how to get it back.
+- [Apple Intelligence storage](https://diskgarden.app/guides/apple-intelligence-storage/): How much space the on-device models really take, and what you can get back.
 - [Do you need a Mac cleaner?](https://diskgarden.app/guides/mac-cleaner-apps/): What cleaners really remove, why the space comes back, and what works better.
 - [Clear caches safely](https://diskgarden.app/guides/clear-cache-mac/): Which caches are safe to delete, which to leave alone, and how much they free.

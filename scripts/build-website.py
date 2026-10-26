@@ -150,10 +150,10 @@ ARTICLES = [
          card="How big the Spotlight index is, why it balloons, and how to rebuild it.",
          related=["macos-system-storage", "system-data-mac", "clear-cache-mac"]),
     dict(slug="apple-intelligence-storage", short="Apple Intelligence storage",
-         title="How Much Storage Does Apple Intelligence Use on a Mac?",
-         description="How much disk space Apple Intelligence's on-device models need on a Mac, where it shows up in "
-                     "Storage settings, and how to get it back if you don't use it.",
-         card="How much space the on-device models need, and how to get it back.",
+         title="Apple Intelligence Storage on a Mac: How Much It Uses",
+         description="How much disk space Apple Intelligence really uses on a Mac, where to see the number on your "
+                     "own machine, and what you can and can't reclaim.",
+         card="How much space the on-device models really take, and what you can get back.",
          related=["macos-system-storage", "system-data-mac", "purgeable-space-mac"]),
     dict(slug="mac-cleaner-apps", short="Do you need a Mac cleaner?",
          title="Do You Need a Mac Cleaner App? What Actually Frees Space",
