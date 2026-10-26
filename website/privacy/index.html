@@ -51,6 +51,7 @@
   <script>document.documentElement.classList.add("js")</script>
   <script>(function(){try{if(localStorage.getItem('dg-lang'))return}catch(e){}if(/bot|crawl|spider|slurp|lighthouse|headless/i.test(navigator.userAgent))return;var S=["es", "fr", "it", "de", "sv", "pl", "tr", "ru", "uk", "ar", "ja", "ko", "vi"],L=navigator.languages||[navigator.language||''];for(var i=0;i<L.length;i++){var l=(L[i]||'').toLowerCase(),f=null;if(l.indexOf('en')===0)return;if(/^zh-(tw|hk|mo|hant)/.test(l))f='zh-hant';else if(l.indexOf('zh')===0)f='zh-hans';else if(l==='pt-pt')f='pt-pt';else if(l.indexOf('pt')===0)f='pt-br';else if(S.indexOf(l.slice(0,2))>=0)f=l.slice(0,2);if(f){location.replace('/'+f+location.pathname+location.search+location.hash);return}}})()</script>
   <script src="/assets/site.js" defer></script>
+  <script src="https://static.cloudflareinsights.com/beacon.min.js" defer data-cf-beacon='{"token": "ab5fefe7d8cb496c9a248606240e3dab"}'></script>
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://diskgarden.app/#org","name":"DiskGarden","url":"https://diskgarden.app/","logo":"https://diskgarden.app/assets/app-icon-512.png","contactPoint":{"@type":"ContactPoint","contactType":"customer support","email":"support@diskgarden.app"}},{"@type":"WebSite","@id":"https://diskgarden.app/#website","name":"DiskGarden","url":"https://diskgarden.app/","publisher":{"@id":"https://diskgarden.app/#org"},"inLanguage":"en"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DiskGarden","item":"https://diskgarden.app/"},{"@type":"ListItem","position":2,"name":"Privacy","item":"https://diskgarden.app/privacy/"}]}]}</script>
 <!-- /dg:head -->
 </head>
@@ -90,7 +91,7 @@
     <div class="prose">
       <section>
         <h2>Your files stay on your Mac</h2>
-        <p>Scanning happens entirely on your Mac. The map, the names and sizes of your files and folders, and your saved scan results are stored locally (in <code>~/Library/Application Support/DiskGarden</code>) and are never uploaded. DiskGarden has no account, no ads and no analytics.</p>
+        <p>Scanning happens entirely on your Mac. The map, the names and sizes of your files and folders, and your saved scan results are stored locally (in <code>~/Library/Application Support/DiskGarden</code>) and are never uploaded. The app has no account, no ads and no analytics; what the website measures is described below.</p>
       </section>
       <section>
         <h2>What does go online</h2>
@@ -104,7 +105,9 @@
       </section>
       <section>
         <h2>This website</h2>
-        <p>diskgarden.app uses no cookies, no analytics and no trackers. It is hosted on GitHub Pages, which may log visitors' IP addresses for security; see <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub's privacy statement</a>.</p>
+        <p>diskgarden.app sets no cookies and shows no ads. To see how many people find the site and which pages are worth writing, it counts page views with <a href="https://www.cloudflare.com/web-analytics/">Cloudflare Web Analytics</a>, which is built not to identify anyone: it stores nothing in your browser — no cookies, no local storage — and it does not fingerprint you or follow you to other sites. There is nothing to consent to, which is why you see no cookie banner.</p>
+        <p>A page view reports the address of the page, the site that linked you to it, your country, your browser, operating system and device type (desktop, mobile or tablet), and how quickly the page loaded. Like any web request it reveals your IP address to Cloudflare, which uses it to work out the country and not to recognize you. Nothing ties one page view to another, so no profile of you is built anywhere. Cloudflare's handling of this data is described in its <a href="https://www.cloudflare.com/privacypolicy/">privacy policy</a>.</p>
+        <p>The pages are hosted on GitHub Pages, and downloads are served from dl.diskgarden.app by Cloudflare. Both may log visitors' IP addresses to keep the service running and secure, and the download count comes from those server logs rather than from anything in your browser; see <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub's privacy statement</a>.</p>
       </section>
       <section>
         <h2>Questions</h2>

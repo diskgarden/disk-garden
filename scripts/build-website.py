@@ -27,6 +27,12 @@ ORIGIN = "https://diskgarden.app"
 REL = json.loads((ROOT / "scripts/website/release.json").read_text())
 YEAR = datetime.date.today().year
 
+# Cloudflare Web Analytics site tag: public by design — it ships in every page and only names the site to report to,
+# so it is not a credential. Cookieless and without fingerprinting, which is why website/privacy/ can keep its
+# "nothing stored in your browser" promise. Empty string = no beacon at all. Cloudflare dashboard → Web Analytics →
+# diskgarden.app → Manage site → the `token` value of the JS snippet.
+CF_BEACON_TOKEN = "ab5fefe7d8cb496c9a248606240e3dab"
+
 APP_DESCRIPTION = ("DiskGarden is a free disk space analyzer for Mac. It maps every file and folder on your disk as an "
                    "interactive chart, shows hidden space, and lets you clear space safely.")
 
@@ -374,6 +380,10 @@ def head(page, page_html, modified, lang="en", tr=IDENTITY):
     ]
     if page.get("bloom"):
         lines.append('<script src="/assets/bloom.js" defer></script>')
+    if CF_BEACON_TOKEN:
+        # Deferred, so it runs after the page is parsed, like Cloudflare's own "before </body>" placement.
+        lines.append('<script src="https://static.cloudflareinsights.com/beacon.min.js" defer '
+                     f'data-cf-beacon=\'{json.dumps({"token": CF_BEACON_TOKEN})}\'></script>')
     lines.append(ld({"@context": "https://schema.org", "@graph": graph}))
     return "\n".join("  " + l for l in lines)
 

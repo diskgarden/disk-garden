@@ -50,6 +50,19 @@ DNS at the domain registrar: apex `A` records `185.199.108.153`, `185.199.109.15
 The site uses root-relative links, so it only renders correctly on the custom domain (not under
 `diskgarden.github.io/disk-garden/`).
 
+## Analytics
+
+`CF_BEACON_TOKEN` at the top of `scripts/build-website.py` holds the Cloudflare Web Analytics site tag. Set, it bakes
+the deferred `beacon.min.js` script into every page's `<head>`; empty, no beacon is emitted anywhere. The token is
+public by design — it ships in every page and only names the site to report to — so it is not a credential and belongs
+in this repository. Get it from Cloudflare dashboard → **Web Analytics** → `diskgarden.app` → **Manage site**.
+
+Cloudflare Web Analytics is cookieless: no client-side state, no fingerprinting, nothing to consent to. Per page view
+it reports path, host, referrer, country, browser, OS, device type, navigation type and Core Web Vitals. It has **no
+custom events**, so a download click cannot be recorded — the funnel is page views here plus real DMG `GET`s from the
+Cloudflare dashboard for `dl.diskgarden.app`. `website/privacy/` describes exactly this; if the token or the provider
+changes, that page and its 17 translations have to change in the same commit.
+
 ## Releases and the update feed
 
 The app repo's `scripts/publish-update.sh` signs a release into the app repo's `Releases/` (the master copy) and then
