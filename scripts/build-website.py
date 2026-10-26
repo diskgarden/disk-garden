@@ -395,11 +395,14 @@ GLOBE = ('<svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="cur
          '17M12 3.5c-2.6 2.4-2.6 14.6 0 17"/></g></svg>')
 
 
+ARIA_CURRENT = ' aria-current="true"'  # out of the f-string below: a backslash in one needs Python 3.12
+
+
 def lang_switcher(path, lang):
     cur = i18n.LANG_BY_CODE[lang]
     items = "".join(
         f'<a href="{i18n.lang_path(folder, path)}" hreflang="{hl}" lang="{hl}" data-lang="{folder or "en"}"'
-        f'{" aria-current=\"true\"" if code == lang else ""} translate="no">{name}</a>'
+        f'{ARIA_CURRENT if code == lang else ""} translate="no">{name}</a>'
         for code, folder, hl, name, *_ in i18n.LANGS)
     return (f'<div class="lang"><button class="lang-btn" type="button" aria-haspopup="true" aria-expanded="false" '
             f'aria-label="Language">{GLOBE}<span translate="no">{cur[2].split("-")[0].upper()}</span></button>'

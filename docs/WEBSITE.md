@@ -31,6 +31,9 @@ cd website && python3 -m http.server 8000     # then open http://localhost:8000
 
 Links are root-relative (`/download/`), so preview from `website/` as the server root.
 
+The build script runs on Python 3.9 and up, so a stock `python3` is enough on any supported macOS. CI pins 3.12
+(`actions/setup-python` in `.github/workflows/pages.yml`) rather than taking whatever the runner image ships.
+
 ## Per release
 
 Edit `scripts/website/release.json`: `version`, `released`, `sizeMB`, `installedMB`, `dmg`, `sha256`, `signedBy`,

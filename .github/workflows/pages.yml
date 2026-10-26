@@ -25,6 +25,11 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+      # Pinned: the script's f-strings and the runner's default python3 have drifted apart before (DIS-18),
+      # and the ubuntu-latest label moves to Ubuntu 26 from 2026-10-19.
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
       - name: Bake shared parts (head, header, footer, release facts, sitemap)
         run: python3 scripts/build-website.py
       - name: Assemble the site
