@@ -1,0 +1,42 @@
+# Runs the download Worker's unit suite (worker/test/attribution.test.js, 41 tests).
+#
+# Deliberately separate from pages.yml, for two reasons (DIS-28):
+#   1. Coverage. pages.yml's paths filter lists only worker/src/attribution.js, so a change to
+#      worker/src/index.js or to the tests themselves does not trigger it at all. A test step added
+#      there would skip exactly the Worker changes most worth testing.
+#   2. Blast radius. The suite imports nothing outside worker/src/ — no website/, no scripts/, no
+#      filesystem, no network. A website-only change cannot break it, so gating the page deploy on it
+#      would buy no coverage while giving a broken Worker the power to stop a page from shipping.
+# The overlap that matters is kept: editing worker/src/attribution.js runs both this suite and
+# pages.yml's check-src-tags.py, which is the DIS-27 failure from both sides.
+name: Worker tests
+
+on:
+  push:
+    branches: [main]
+    paths: ["worker/**", ".github/workflows/worker-tests.yml"]
+  pull_request:
+    paths: ["worker/**", ".github/workflows/worker-tests.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: worker-tests-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      # Pinned to 24 because that is the only version the suite has actually been run on. The tests
+      # import node:test and node:assert/strict and nothing else, so there is no install step and no
+      # lockfile to restore — worker/package.json declares no dependencies.
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Run the Worker unit tests
+        run: node --test
+        working-directory: worker
