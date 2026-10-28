@@ -53,6 +53,46 @@ DNS at the domain registrar: apex `A` records `185.199.108.153`, `185.199.109.15
 The site uses root-relative links, so it only renders correctly on the custom domain (not under
 `diskgarden.github.io/disk-garden/`).
 
+## Deploying
+
+A push to `main` is what deploys, so the push *is* the publish step. Agents cannot run `git push`: it is denied in
+root-owned managed settings (`/Library/Application Support/ClaudeCode/managed-settings.d/60-diskgarden-agents.json`),
+the same deny that keeps the app repo unpublishable while the Sparkle key rotation and history scrub are outstanding.
+Permission rules match the command string and not the working directory, so "allow a push only from `site/`" cannot be
+written as a rule at all.
+
+One wrapper is that rule. It is root-owned, allowed by its exact path, takes no arguments, and pushes this repository
+and nothing else:
+
+```sh
+/usr/local/libexec/diskgarden/deploy-site.sh
+```
+
+It publishes committed work only, never force-pushes, and refuses rather than guesses — any non-zero exit means
+nothing was pushed:
+
+| Exit | Meaning |
+|---|---|
+| 0 | pushed; prints the before/after SHAs, the Actions URL and the rollback command |
+| 1 | not this repo's root, `origin` repointed, not on `main`, or behind origin |
+| 2 | working tree dirty — commit or stash first |
+| 3 | nothing to push |
+| 4 | `website/appcast.xml` would change |
+| 5 | arguments given |
+
+Exit 4 is the one worth knowing about. `website/appcast.xml` is the Sparkle feed served at
+`https://diskgarden.app/appcast.xml`, so a change to it reaches *installed* copies of DiskGarden rather than only
+visitors. That has to be verified against the app repo's `docs/UPDATES.md` and ships through the release path, never
+through a website deploy.
+
+Roll back by reverting forward — `git revert --no-edit <sha>`, then run the wrapper again. Published history is never
+rewritten. The wrapper appends each push to `~/Library/Logs/diskgarden-deploy-site.log`; that is a convenience trail,
+not the record — the record is the commit history and the task log.
+
+Note that `pages.yml` only rebuilds when a push touches one of its `paths` — `website/**`, `scripts/**`,
+`worker/src/attribution.js` or the workflow itself — so a change confined to `docs/` pushes but deploys nothing, by
+design. Use **Actions → Website → Run workflow** if you ever need a rebuild without a matching change.
+
 ## Analytics
 
 `CF_BEACON_TOKEN` at the top of `scripts/build-website.py` holds the Cloudflare Web Analytics site tag. Set, it bakes
