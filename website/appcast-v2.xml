@@ -1,0 +1,27 @@
+<?xml version="1.0" standalone="yes"?><!-- sparkle-sign-warning:
+IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
+--><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+    <channel>
+        <title>DiskGarden</title>
+        <item>
+            <title>1.0.7</title>
+            <pubDate>Wed, 28 Oct 2026 10:46:26 +0000</pubDate>
+            <link>https://diskgarden.app</link>
+            <sparkle:criticalUpdate></sparkle:criticalUpdate>
+            <sparkle:version>10007</sparkle:version>
+            <sparkle:shortVersionString>1.0.7</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <description sparkle:format="markdown"><![CDATA[## DiskGarden 1.0.7
+
+- Security: DiskGarden now verifies updates with a new signing key. Installing this update switches your copy over —
+  it is a required update, because versions before 1.0.7 cannot check the new signature.
+- Full-disk scans keep their results in memory instead of writing them to a temporary file, and results that need
+  administrator rights are passed straight back to the app rather than through a file on disk.
+]]></description>
+            <enclosure url="https://dl.diskgarden.app/DiskGarden-1.0.7.dmg" length="6260178" type="application/octet-stream" sparkle:edSignature="LnmoVu/mFuYhrR0NiTIa7E8XDMSdgTR4Jcp5DjuvDjEQHaayofpXGbhBnbdbTsghGhOSnhvb+XT6qbqTlGV3AQ=="></enclosure>
+        </item>
+    </channel>
+</rss><!-- sparkle-signatures:
+edSignature: h1bUPU/+4D1Erp7vbA0jFsDasrfPid7zYZ6zlhA+DovBwU6SwaMh1DjwrHsrXZ/AouwfjYuCz9KlRvonzS61Ag==
+length: 1639
+-->

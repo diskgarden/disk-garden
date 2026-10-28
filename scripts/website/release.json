@@ -1,18 +1,27 @@
 {
-  "version": "1.0.6",
-  "released": "2026-10-08",
+  "version": "1.0.7",
+  "released": "2026-10-28",
   "minMacOS": "15",
   "minMacOSName": "Sequoia",
   "architectures": "Apple silicon and Intel",
-  "sizeMB": 6.2,
+  "sizeMB": 6.3,
   "installedMB": 13,
-  "dmg": "https://dl.diskgarden.app/DiskGarden-1.0.6.dmg",
-  "sha256": "62a9658e34bedb88041406179b3691a0c545c3fded2ee228d51e8a70f4d074f1",
+  "dmg": "https://dl.diskgarden.app/DiskGarden-1.0.7.dmg",
+  "sha256": "b3cf16c0900ee851af442e0155c7073ec7cd6f49d4dd4fcf5cb681693e9fbe37",
   "signedBy": "Anirudh Gupta (7STSZZ5YCT)",
   "notarized": true,
   "supportEmail": "support@diskgarden.app",
   "languages": "English and 17 more",
   "history": [
+    {
+      "version": "1.0.7",
+      "date": "2026-10-28",
+      "dmg": "https://dl.diskgarden.app/DiskGarden-1.0.7.dmg",
+      "notes": [
+        "Security: DiskGarden now verifies updates with a new signing key. Installing this update switches your copy over —",
+        "Full-disk scans keep their results in memory instead of writing them to a temporary file, and results that need"
+      ]
+    },
     {
       "version": "1.0.6",
       "date": "2026-10-08",
