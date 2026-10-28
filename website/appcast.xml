@@ -20,7 +20,7 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
 - Full-disk scans keep their results in memory instead of writing them to a temporary file, and results that need
   administrator rights are passed straight back to the app rather than through a file on disk.
 ]]></description>
-            <enclosure url="https://dl.diskgarden.app/DiskGarden-1.0.7.dmg" length="6260178" type="application/octet-stream"/>
+            <enclosure sparkle:edSignature="8NP1QQdS+ZArBK2BerU1sVHNEwkaRNFSW7tss05YSNXr3c26MqBmT91WSFqOWq0sihNtBQYLSZ2PVUCXD/ErBQ==" url="https://dl.diskgarden.app/DiskGarden-1.0.7.dmg" length="6260178" type="application/octet-stream"/>
         </item>
         <item>
             <title>1.0.6</title>
@@ -51,6 +51,6 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: vVYv3FFovP7cs3Ptvu8KZQ7Bt7UIivc/m2urdVN0xL5b/VFob4S5+54OA9CXmcjk8ue0ZCP8fgofbLfaYg3TCA==
-length: 3132
+edSignature: zq7uvySMU8vHDlmAtT7b2jHjmR/UuRz74jNm0xg6zL0QL4PkZUzDQYPJcMnjGlMLWsPAhX4RnzWhaA06Az1rDg==
+length: 3243
 -->
