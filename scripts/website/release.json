@@ -18,8 +18,8 @@
       "date": "2026-10-28",
       "dmg": "https://dl.diskgarden.app/DiskGarden-1.0.7.dmg",
       "notes": [
-        "Security: DiskGarden now verifies updates with a new signing key. Installing this update switches your copy over —",
-        "Full-disk scans keep their results in memory instead of writing them to a temporary file, and results that need"
+        "Security: DiskGarden now verifies updates with a new signing key. Installing this update switches your copy over — it is a required update, because versions before 1.0.7 cannot check the new signature.",
+        "Full-disk scans keep their results in memory instead of writing them to a temporary file, and results that need administrator rights are passed straight back to the app rather than through a file on disk."
       ]
     },
     {

@@ -742,5 +742,8 @@
  "Write to <a data-dg-href=\"email\" href=\"mailto:support@diskgarden.app\">⟦0⟧</a>.": "<a data-dg-href=\"email\" href=\"mailto:support@diskgarden.app\">⟦0⟧</a>までご連絡ください。",
  "Remembers when you first started using DiskGarden on this Mac (stored only on your Mac), so early users can be thanked later.": "このMacでDiskGardenを使い始めた日を記録します（保存されるのはあなたのMacの中だけです）。早くから使ってくれた方に、あとでお礼ができるようにするためです。",
  "Maintenance release: checks updates from 1.0.4. Nothing else changes.": "メンテナンスリリース：1.0.4からのアップデートを確認します。ほかに変更はありません。",
- "When an update is required, the update screen installs an update that has already downloaded, and shows progress while one is downloading.": "アップデートが必須の場合、アップデート画面はすでにダウンロード済みのアップデートをインストールし、ダウンロード中は進行状況を表示します。"
+ "When an update is required, the update screen installs an update that has already downloaded, and shows progress while one is downloading.": "アップデートが必須の場合、アップデート画面はすでにダウンロード済みのアップデートをインストールし、ダウンロード中は進行状況を表示します。",
+ "<a href=\"https://github.com/diskgarden/diskgarden-app\">Source code</a>": "<a href=\"https://github.com/diskgarden/diskgarden-app\">ソースコード</a>",
+ "Security: DiskGarden now verifies updates with a new signing key. Installing this update switches your copy over — it is a required update, because versions before 1.0.7 cannot check the new signature.": "セキュリティ: DiskGardenは新しい署名キーでアップデートを検証するようになりました。このアップデートをインストールすると、お使いのコピーが新しいキーに切り替わります。1.0.7より前のバージョンは新しい署名を確認できないため、必須のアップデートです。",
+ "Full-disk scans keep their results in memory instead of writing them to a temporary file, and results that need administrator rights are passed straight back to the app rather than through a file on disk.": "ディスク全体のスキャンは、結果を一時ファイルに書き出さずメモリ内に保持します。また、管理者権限が必要な結果は、ディスク上のファイルを経由せずアプリへ直接返されます。"
 }

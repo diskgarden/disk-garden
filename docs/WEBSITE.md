@@ -40,6 +40,19 @@ Edit `scripts/website/release.json`: `version`, `released`, `sizeMB`, `installed
 `notarized`, and add the release to the top of `history`. A value left `null` hides whatever shows it, so the site
 never shows a placeholder. Run `python3 scripts/build-website.py` and commit; the workflow redeploys.
 
+**Copy each `notes` bullet whole.** They come from the app repo's `Releases/notes/<version>.md`, where bullets are
+hard-wrapped across two lines, and taking only the first line truncates the note mid-sentence. 1.0.7 shipped that way
+— *"…switches your copy over —"* — live on `/releases/` in English and untranslated in all 17 languages, because
+nothing downstream notices: the page renders and the build passes. `build-website.py` now **fails** on any note that
+does not end a sentence. It is a shape check, not a comparison against the app repo (which this repository does not
+have), so it catches the truncation but not a reworded note; read the rendered page too.
+
+A new or changed note is also a new translatable segment. Run `python3 scripts/build-website.py --extract`, translate
+the missing segments in all 17 catalogs and check with `check_i18n.py` — otherwise the release notes show English to
+every non-English visitor, which is what happened to 1.0.7. Note that `check_i18n.py` compares a catalog against
+`source.json`, so it reports 0 missing while the *build* reports untranslated segments whenever `source.json` is
+stale: trust the build's count and re-run `--extract` first.
+
 ## Hosting (GitHub Pages)
 
 This repository (`diskgarden/disk-garden`) is public (GitHub Pages is free for public repos); the app lives in the

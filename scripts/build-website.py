@@ -27,6 +27,22 @@ ORIGIN = "https://diskgarden.app"
 REL = json.loads((ROOT / "scripts/website/release.json").read_text())
 YEAR = datetime.date.today().year
 
+
+def _check_release_notes():
+    """Release notes are hand-copied from the app repo's Releases/notes/<version>.md, whose bullets are
+    hard-wrapped across lines. Copying only a bullet's first line silently truncates the note, and nothing
+    downstream notices: the page renders, the build passes, and the half-sentence ships. 1.0.7 went out that
+    way — "…switches your copy over —" — so a note that does not end a sentence is a build failure."""
+    for entry in REL.get("history", []):
+        for note in entry.get("notes", []):
+            if not note.rstrip().endswith((".", "!", "?", "…", "。", "！", "？")):
+                raise SystemExit(
+                    f'release.json: the {entry.get("version")} note does not end a sentence, so it was most '
+                    f'likely truncated when copied from Releases/notes/{entry.get("version")}.md:\n  {note!r}')
+
+
+_check_release_notes()
+
 # Cloudflare Web Analytics site tag: public by design — it ships in every page and only names the site to report to,
 # so it is not a credential. Cookieless and without fingerprinting, which is why website/privacy/ can keep its
 # "nothing stored in your browser" promise. Empty string = no beacon at all. Cloudflare dashboard → Web Analytics →
@@ -487,7 +503,7 @@ def footer():
           {col("Product", [("Features", "/#features"), ("Download", "/download/"), ("Release notes", "/releases/")])}
           {col("Learn", [("Mac storage guides", "/guides/"), ("Free up space on a Mac", "/guides/free-up-space-on-mac/"), ("What is System Data?", "/guides/system-data-mac/"), ("User guide", "/user-guide/")])}
           {col("Support", [("FAQ", "/support/#faq"), ("Contact", "/support/#contact"), ("Privacy", "/privacy/")])}
-          {col("Company", [("About", "/about/"), ("Terms", "/terms/")])}
+          {col("Company", [("About", "/about/"), ("Source code", "https://github.com/diskgarden/diskgarden-app"), ("Terms", "/terms/")])}
         </div>
       </div>
       <div class="legal"><span>© {YEAR} DiskGarden. DiskGarden is free software.</span><span>Apple, Mac and macOS are trademarks of Apple Inc.</span></div>

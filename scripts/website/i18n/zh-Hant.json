@@ -742,5 +742,8 @@
  "Write to <a data-dg-href=\"email\" href=\"mailto:support@diskgarden.app\">⟦0⟧</a>.": "請來信至 <a data-dg-href=\"email\" href=\"mailto:support@diskgarden.app\">⟦0⟧</a>。",
  "Remembers when you first started using DiskGarden on this Mac (stored only on your Mac), so early users can be thanked later.": "記錄你在這台 Mac 上首次開始使用 DiskGarden 的時間（只儲存在你的 Mac 上），以便日後感謝早期使用者。",
  "Maintenance release: checks updates from 1.0.4. Nothing else changes.": "維護版本：驗證從 1.0.4 的更新。其他沒有變動。",
- "When an update is required, the update screen installs an update that has already downloaded, and shows progress while one is downloading.": "當更新為必要時，更新畫面會安裝已經下載完成的更新，並在下載期間顯示進度。"
+ "When an update is required, the update screen installs an update that has already downloaded, and shows progress while one is downloading.": "當更新為必要時，更新畫面會安裝已經下載完成的更新，並在下載期間顯示進度。",
+ "<a href=\"https://github.com/diskgarden/diskgarden-app\">Source code</a>": "<a href=\"https://github.com/diskgarden/diskgarden-app\">原始碼</a>",
+ "Security: DiskGarden now verifies updates with a new signing key. Installing this update switches your copy over — it is a required update, because versions before 1.0.7 cannot check the new signature.": "安全性：DiskGarden 現在會使用新的簽署金鑰來驗證更新。安裝此更新後，你的副本會切換到新金鑰——這是必要的更新，因為 1.0.7 之前的版本無法驗證新的簽章。",
+ "Full-disk scans keep their results in memory instead of writing them to a temporary file, and results that need administrator rights are passed straight back to the app rather than through a file on disk.": "全碟掃描會將結果保留在記憶體中，而不是寫入暫存檔；需要管理者權限的結果會直接回傳給 App，而不經過磁碟上的檔案。"
 }
